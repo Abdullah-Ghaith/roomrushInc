@@ -1,4 +1,3 @@
 Next up:
 
-2. Add points to the screen, statically in one spot
 3. Add door portal where player shrinks as they enter then scene manager loads next screen
