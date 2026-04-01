@@ -12,7 +12,7 @@ func _ready() -> void:
 	health_component.revived.connect(_handle_revived)
 
 
-func _handle_damaged(amount: float) -> void:
+func _handle_damaged(amount: float, is_crit: bool) -> void:
 	# Update progress
 	var curr_progress: float = self.get_value()
 	curr_progress -= amount

@@ -8,8 +8,8 @@ const TOP_Z_LEVEL : int = 1000
 @onready var health_component: HealthComponent = %HealthComponent
 
 func _ready() -> void:
-	health_component.damaged.connect(func(_amount):
-		spawn_label(_amount, false))
+	health_component.damaged.connect(func(_amount, _is_crit):
+		spawn_label(_amount, _is_crit))
 
 func spawn_label(number: float, critical_hit: bool = false) -> void:
 	var new_label: Label = Label.new()

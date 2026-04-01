@@ -5,7 +5,7 @@ extends AnimatedSprite2D
 var death_tween : Tween
 
 func _ready() -> void:
-	health_component.damaged.connect(func(_amount):
+	health_component.damaged.connect(func(_amount, _is_crit):
 		self.play("Hit")
 		await self.animation_finished
 		self.play("idle")

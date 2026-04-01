@@ -20,6 +20,8 @@ func _on_hitbox_entered(area: Area2D) -> void:
 		## Compose attack
 		var attack = Attack.new()
 		attack.attack_damage   = bullet_data.damage
+		attack.crit_chance     = bullet_data.crit_chance
+		attack.crit_modifier   = bullet_data.crit_modifier
 		attack.attack_position = self.global_position
 		attack.knockback_force = bullet_data.knockback
 		area.take_damage(attack)

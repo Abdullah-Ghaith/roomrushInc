@@ -10,7 +10,7 @@ class_name HealthComponent
 
 var health             : float
 
-signal damaged(amount)
+signal damaged(amount: float, is_crit: bool)
 signal died()
 signal revived()
 
@@ -18,10 +18,14 @@ func _ready():
 	health = MAX_HEALTH
 
 func take_damage(attack: Attack) -> void:
+	var damage = attack.attack_damage
+	var is_crit = 100*randf() < attack.crit_chance
+	if is_crit:
+		damage *= attack.crit_modifier
 	
 	# Take Damage
-	health -= attack.attack_damage
-	damaged.emit(attack.attack_damage)
+	health -= damage
+	damaged.emit(damage, is_crit)
 
 	if health <= 0:
 		_die()

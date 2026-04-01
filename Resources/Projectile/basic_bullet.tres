@@ -8,4 +8,6 @@ script = ExtResource("1_skkea")
 speed = 600.0
 lifetime = 0.5
 damage = 1.9
+crit_chance = 20.0
+crit_modifier = 2.0
 metadata/_custom_type_script = "uid://yj2y0f6kxobd"
