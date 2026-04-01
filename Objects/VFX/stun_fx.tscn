@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://qrwwg2bcqoma"]
+
+[ext_resource type="Texture2D" uid="uid://bcnbjo6ief42r" path="res://Assets/VFX/StunFX1-Sheet-export.png" id="1_8ax1v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddm6r"]
+atlas = ExtResource("1_8ax1v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r755"]
+atlas = ExtResource("1_8ax1v")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31xgi"]
+atlas = ExtResource("1_8ax1v")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy6o1"]
+atlas = ExtResource("1_8ax1v")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25exx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddm6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r755")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31xgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy6o1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StunFX" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_25exx")
+autoplay = "default"
+frame_progress = 0.8003657

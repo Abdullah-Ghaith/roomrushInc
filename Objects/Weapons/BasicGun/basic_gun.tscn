@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://52etfvfak5qv"]
+
+[ext_resource type="Script" uid="uid://c16k3a0ypl5vj" path="res://Objects/Weapons/BasicGun/basic_gun.gd" id="1_c7xif"]
+[ext_resource type="Texture2D" uid="uid://duiu3uopfp1yw" path="res://Assets/weapon/basic_gun.png" id="2_bu55e"]
+[ext_resource type="PackedScene" uid="uid://6nuniiqaooo5" path="res://Objects/Projectiles/basic_bullet.tscn" id="2_woq3n"]
+
+[node name="BasicGun" type="Node2D"]
+script = ExtResource("1_c7xif")
+bullet_scene = ExtResource("2_woq3n")
+FIRE_CD = 0.33
+metadata/_custom_type_script = "uid://c16k3a0ypl5vj"
+
+[node name="Weapon Pivot" type="Marker2D" parent="."]
+position = Vector2(35, 0)
+
+[node name="Gun Sprite" type="Sprite2D" parent="Weapon Pivot"]
+unique_name_in_owner = true
+position = Vector2(14, 0)
+texture = ExtResource("2_bu55e")
+
+[node name="Shooting Point" type="Marker2D" parent="Weapon Pivot/Gun Sprite"]
+unique_name_in_owner = true
+position = Vector2(14, -2)

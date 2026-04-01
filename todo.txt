@@ -1,0 +1,8 @@
+Next up:
+1. make a dummy, 
+	give it hit flash, 
+	make it take 1 sec to respawn (add upgrade to this later), 
+	while its dead, its a black silhouette, 
+	give it an hp bar that goes from green to red  
+2. Add points to the screen, statically in one spot
+3. Add door portal where player shrinks as they enter then scene manager loads next screen

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="projectileData" load_steps=2 format=3 uid="uid://dfo5n8x80vel1"]
+
+[ext_resource type="Script" uid="uid://yj2y0f6kxobd" path="res://Util/Classes/Projectiles/projectileData.gd" id="1_skkea"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_skkea")
+speed = 600.0
+lifetime = 0.5
+damage = 2.0
+metadata/_custom_type_script = "uid://yj2y0f6kxobd"

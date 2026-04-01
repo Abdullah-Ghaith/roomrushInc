@@ -1,0 +1,154 @@
+[gd_scene load_steps=20 format=3 uid="uid://btoqolbgefpo2"]
+
+[ext_resource type="Script" uid="uid://7hfxo8knwrps" path="res://Objects/AttackDummy/dummy_sprite.gd" id="1_32kad"]
+[ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="1_e01fk"]
+[ext_resource type="Texture2D" uid="uid://bb5mul4bbjwcq" path="res://Assets/Enemy/Dummy/dummy-Sheet.png" id="1_iqd47"]
+[ext_resource type="Shader" uid="uid://dl58oyh0pwrau" path="res://Util/Common Shaders/hit_flash.tres" id="2_4s70h"]
+[ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="3_4s70h"]
+[ext_resource type="Texture2D" uid="uid://7hhitn3hfoww" path="res://Assets/UI/ProgressBar/ProgressBarOutline.png" id="5_nkpjw"]
+[ext_resource type="Texture2D" uid="uid://bb3nl1y02yslk" path="res://Assets/UI/ProgressBar/WhiteProgressBar.png" id="6_32kad"]
+[ext_resource type="Script" uid="uid://dxpctsww8bvsr" path="res://Objects/AttackDummy/hp_bar.gd" id="7_q0u85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dlbyr"]
+shader = ExtResource("2_4s70h")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlbyr"]
+atlas = ExtResource("1_iqd47")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qekd"]
+atlas = ExtResource("1_iqd47")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkpjw"]
+atlas = ExtResource("1_iqd47")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32kad"]
+atlas = ExtResource("1_iqd47")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0u85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlbyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qekd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkpjw")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32kad")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13ycl"]
+size = Vector2(30, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2n41"]
+size = Vector2(78, 24)
+
+[sub_resource type="Animation" id="Animation_nkpjw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummySprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2qekd"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummySprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32kad"]
+_data = {
+&"RESET": SubResource("Animation_nkpjw"),
+&"hit_flash": SubResource("Animation_2qekd")
+}
+
+[node name="Dummy" type="Node2D"]
+
+[node name="StunMarker" type="Marker2D" parent="."]
+position = Vector2(0, -47)
+
+[node name="DummySprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dlbyr")
+sprite_frames = SubResource("SpriteFrames_q0u85")
+animation = &"Hit"
+autoplay = "Idle"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("1_32kad")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_e01fk")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://2pfpvjm7krcb"
+
+[node name="Hurtbox1" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_13ycl")
+
+[node name="Hurbox2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(2, -7)
+shape = SubResource("RectangleShape2D_x2n41")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_4s70h")
+revive_time = 3.0
+metadata/_custom_type_script = "uid://bwqr0iti8dnil"
+
+[node name="HP Bar" type="TextureProgressBar" parent="."]
+self_modulate = Color(0, 0.8862974, 0.14747149, 1)
+offset_left = -36.0
+offset_top = 42.0
+offset_right = 102.0
+offset_bottom = 90.0
+rotation = -0.14563465
+scale = Vector2(0.53809047, 0.53809047)
+value = 30.0
+texture_under = ExtResource("5_nkpjw")
+texture_progress = ExtResource("6_32kad")
+script = ExtResource("7_q0u85")
+
+[node name="HitflashAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_32kad")
+}

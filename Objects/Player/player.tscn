@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5x0uwhsvkay6"]
+[gd_scene load_steps=4 format=3 uid="uid://c5x0uwhsvkay6"]
 
 [ext_resource type="Script" uid="uid://xu1a36306xhx" path="res://Objects/Player/player.gd" id="1_yw17q"]
 [ext_resource type="Texture2D" uid="uid://p76ijsx8n27j" path="res://Assets/Player/main-player-syd-version.png" id="2_l2ya6"]
+[ext_resource type="PackedScene" uid="uid://52etfvfak5qv" path="res://Objects/Weapons/BasicGun/basic_gun.tscn" id="3_l2ya6"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 2
+collision_mask = 2
 script = ExtResource("1_yw17q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_l2ya6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16, 9)
+scale = Vector2(1.0730073, 1.1696163)
+polygon = PackedVector2Array(-4.6598015, 11.114756, 14.911362, -25.649439, 34.482525, 11.114756)
+
+[node name="BasicGun" parent="." instance=ExtResource("3_l2ya6")]
+position = Vector2(9.536743e-07, 9.313226e-10)
+rotation = 0.0009770232
