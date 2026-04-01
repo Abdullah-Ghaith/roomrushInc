@@ -1,3 +1,9 @@
 Next up:
 
+2. Add crit chance to bullet data
 3. Add door portal where player shrinks as they enter then scene manager loads next screen
+
+
+Planned
+- Killing the last enemy causes this kind of shockwave to ripple across the screen https://www.youtube.com/watch?v=SCHdglr35pk
+- Give player dash https://www.youtube.com/watch?v=fp_XugQvOKU

@@ -105,7 +105,7 @@ _data = {
 font = ExtResource("11_x2n41")
 font_size = 32
 font_color = Color(0, 0.5019608, 0.5019608, 1)
-outline_size = 1
+outline_size = 3
 outline_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
 
 [node name="Dummy" type="Node2D"]
