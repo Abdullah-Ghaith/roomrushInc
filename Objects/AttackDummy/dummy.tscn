@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://btoqolbgefpo2"]
+[gd_scene load_steps=21 format=3 uid="uid://btoqolbgefpo2"]
 
-[ext_resource type="Script" uid="uid://7hfxo8knwrps" path="res://Objects/AttackDummy/dummy_sprite.gd" id="1_32kad"]
+[ext_resource type="Script" uid="uid://dr1s3xtmtoard" path="res://Objects/AttackDummy/dummy.gd" id="1_32kad"]
 [ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="1_e01fk"]
 [ext_resource type="Texture2D" uid="uid://bb5mul4bbjwcq" path="res://Assets/Enemy/Dummy/dummy-Sheet.png" id="1_iqd47"]
 [ext_resource type="Shader" uid="uid://dl58oyh0pwrau" path="res://Util/Common Shaders/hit_flash.tres" id="2_4s70h"]
 [ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="3_4s70h"]
+[ext_resource type="Script" uid="uid://7hfxo8knwrps" path="res://Objects/AttackDummy/dummy_sprite.gd" id="4_q0u85"]
 [ext_resource type="Texture2D" uid="uid://7hhitn3hfoww" path="res://Assets/UI/ProgressBar/ProgressBarOutline.png" id="5_nkpjw"]
 [ext_resource type="Texture2D" uid="uid://bb3nl1y02yslk" path="res://Assets/UI/ProgressBar/WhiteProgressBar.png" id="6_32kad"]
 [ext_resource type="Script" uid="uid://dxpctsww8bvsr" path="res://Objects/AttackDummy/hp_bar.gd" id="7_q0u85"]
@@ -99,9 +100,11 @@ _data = {
 }
 
 [node name="Dummy" type="Node2D"]
+script = ExtResource("1_32kad")
 
 [node name="StunMarker" type="Marker2D" parent="."]
-position = Vector2(0, -47)
+unique_name_in_owner = true
+position = Vector2(0, -55)
 
 [node name="DummySprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -111,7 +114,7 @@ animation = &"Hit"
 autoplay = "Idle"
 frame = 2
 frame_progress = 1.0
-script = ExtResource("1_32kad")
+script = ExtResource("4_q0u85")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 32
