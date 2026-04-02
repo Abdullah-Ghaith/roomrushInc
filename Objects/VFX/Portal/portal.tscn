@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://e4xvyjgqayk6"]
+
+[ext_resource type="Texture2D" uid="uid://6ufb6ysa06ov" path="res://Assets/VFX/VortexEffect.png" id="1_n8fn1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_55b4f"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_57so3"]
+offsets = PackedFloat32Array(0, 0.4864865, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.004181792, 0.4597894, 0.9625382, 1, 0.11104394, 0.064252846, 0.33760217, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7paj1"]
+gradient = SubResource("Gradient_57so3")
+
+[sub_resource type="Curve" id="Curve_855f4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.7902628, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1clk"]
+curve = SubResource("Curve_855f4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7co0w"]
+particle_flag_disable_z = true
+angle_min = 316.90002
+angle_max = 361.00003
+angular_velocity_min = -100.000015
+angular_velocity_max = -100.000015
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_o1clk")
+color_ramp = SubResource("GradientTexture1D_7paj1")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.029999977
+
+[node name="PortalParticles" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_55b4f")
+amount = 10
+texture = ExtResource("1_n8fn1")
+process_material = SubResource("ParticleProcessMaterial_7co0w")

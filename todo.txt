@@ -1,6 +1,5 @@
 Next up:
 
-2. Add crit chance to bullet data
 3. Add door portal where player shrinks as they enter then scene manager loads next screen
 
 

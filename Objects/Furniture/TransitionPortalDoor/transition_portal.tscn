@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://n27njilct0md"]
+
+[ext_resource type="Texture2D" uid="uid://b51sujx4lquqn" path="res://Assets/Furniture Objects/PortalDoor.png" id="1_pmu00"]
+[ext_resource type="PackedScene" uid="uid://e4xvyjgqayk6" path="res://Objects/VFX/Portal/portal.tscn" id="2_uw4m0"]
+
+[node name="TransitionPortal" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9780367, 1)
+texture = ExtResource("1_pmu00")
+
+[node name="PortalParticles" parent="." instance=ExtResource("2_uw4m0")]

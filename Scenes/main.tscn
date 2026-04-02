@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://cu3e8qjbdtfh"]
+[gd_scene load_steps=7 format=4 uid="uid://cu3e8qjbdtfh"]
 
 [ext_resource type="PackedScene" uid="uid://cflslici83xri" path="res://Objects/TileMaps/bw_bg.tscn" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://c5x0uwhsvkay6" path="res://Objects/Player/player.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://b7277pb3xk3hp" path="res://Objects/Platform/basic_blue_oneway.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://btoqolbgefpo2" path="res://Objects/AttackDummy/dummy.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://c3wcsd3n4kc1w" path="res://UI/MoneyDisplay/money_display.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://n27njilct0md" path="res://Objects/Furniture/TransitionPortalDoor/transition_portal.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node2D"]
 
@@ -31,3 +32,6 @@ offset_left = 209.0
 offset_top = -205.0
 offset_right = 209.0
 offset_bottom = -205.0
+
+[node name="TransitionPortal" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(802, 45)
