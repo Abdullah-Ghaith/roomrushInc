@@ -1,0 +1,169 @@
+[gd_scene load_steps=13 format=3 uid="uid://cb7g15hmonlr4"]
+
+[ext_resource type="Texture2D" uid="uid://d2fkk6nc3sfjs" path="res://Assets/Sprites/Loot/CoinPile.png" id="1_fs8ji"]
+[ext_resource type="Shader" uid="uid://d0yapat3o3wae" path="res://UI/MoneyRequirement/money_requirement.gdshader" id="1_ye3r4"]
+[ext_resource type="Script" uid="uid://cwruuoq37y745" path="res://UI/MoneyRequirement/money_requirement.gd" id="2_js1e1"]
+[ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="2_ye3r4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ye3r4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_js1e1"]
+width = 248
+height = 78
+noise = SubResource("FastNoiseLite_ye3r4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2uhh"]
+shader = ExtResource("1_ye3r4")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_js1e1")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03999999910592
+shader_parameter/burn_color = Color(0.23221919, 0.34146366, 0.73662734, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2uhh"]
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4gg6"]
+bg_color = Color(0.06469653, 0.064696535, 0.06469648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_ye3r4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyBox:use_parent_material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fs8ji"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyBox:use_parent_material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_js1e1"]
+_data = {
+&"RESET": SubResource("Animation_ye3r4"),
+&"fade_out": SubResource("Animation_fs8ji")
+}
+
+[node name="MoneyDisplay" type="Control"]
+material = SubResource("ShaderMaterial_k2uhh")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = -1155.0
+offset_bottom = -646.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+script = ExtResource("2_js1e1")
+
+[node name="MoneyBox" type="Panel" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_right = 389.0
+offset_bottom = 75.0
+scale = Vector2(0.20809808, 0.3123585)
+theme_override_styles/panel = SubResource("StyleBoxFlat_k2uhh")
+
+[node name="MoneyIcon" type="Panel" parent="MoneyBox"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.221714
+offset_top = -21.492743
+offset_right = 59.221714
+offset_bottom = 18.507256
+grow_vertical = 2
+scale = Vector2(1.9363075, 1.163997)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4gg6")
+
+[node name="TextureRect" type="TextureRect" parent="MoneyBox/MoneyIcon"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_fs8ji")
+
+[node name="Label" type="Label" parent="MoneyBox"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.893799
+offset_top = -38.567154
+offset_right = 199.54504
+offset_bottom = 39.432846
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7647059)
+theme_override_fonts/font = ExtResource("2_ye3r4")
+theme_override_font_sizes/font_size = 60
+text = "111"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_js1e1")
+}
