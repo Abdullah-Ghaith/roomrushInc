@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://n27njilct0md"]
+[gd_scene load_steps=7 format=3 uid="uid://n27njilct0md"]
 
 [ext_resource type="Script" uid="uid://ctqqloqjacral" path="res://Objects/Furniture/TransitionPortalDoor/transition_portal.gd" id="1_7mrvg"]
 [ext_resource type="Texture2D" uid="uid://b51sujx4lquqn" path="res://Assets/Furniture Objects/PortalDoor.png" id="1_pmu00"]
 [ext_resource type="PackedScene" uid="uid://e4xvyjgqayk6" path="res://Objects/VFX/Portal/portal.tscn" id="2_uw4m0"]
 [ext_resource type="PackedScene" uid="uid://bn1wwlij1ua60" path="res://UI/Buttons/EToInteract/e_to_interact.tscn" id="3_uw4m0"]
+[ext_resource type="PackedScene" uid="uid://cb7g15hmonlr4" path="res://UI/MoneyRequirement/money_requirement.tscn" id="5_7mrvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw4m0"]
 size = Vector2(110.5, 88.5)
@@ -23,7 +24,7 @@ emitting = false
 [node name="E-to-interact" parent="." instance=ExtResource("3_uw4m0")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0.5, -75)
+position = Vector2(0.5, -114)
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -32,6 +33,15 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
 position = Vector2(0.75, -0.75)
 shape = SubResource("RectangleShape2D_uw4m0")
+
+[node name="MoneyRequirement" parent="." instance=ExtResource("5_7mrvg")]
+unique_name_in_owner = true
+offset_left = -62.000008
+offset_top = -84.50001
+offset_right = -62.000008
+offset_bottom = -84.50001
+scale = Vector2(1.5, 1.5)
+value = 10
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_entered"]

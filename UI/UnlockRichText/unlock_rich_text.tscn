@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4inm42t5ihdg"]
+
+[ext_resource type="Script" uid="uid://cp403qx07tw3b" path="res://Util/RichTextEffects/MatrixEffect.gd" id="1_8nvap"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4p682"]
+script = ExtResource("1_8nvap")
+metadata/_custom_type_script = "uid://cp403qx07tw3b"
+
+[node name="UnlockRichText" type="RichTextLabel"]
+custom_minimum_size = Vector2(226, 50)
+offset_right = 50.0
+offset_bottom = 100.0
+bbcode_enabled = true
+text = "[font=Assets/Fonts/zig.ttf][font_size=30][wave][outline_color=4768cf][outline_size=15][wave amp=40][wave freq=2][matrix clean=2.0 dirty=0.4 span=24]UNLOCKED![/matrix]
+"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_4p682")]

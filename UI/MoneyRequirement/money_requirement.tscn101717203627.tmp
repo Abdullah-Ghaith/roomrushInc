@@ -357,6 +357,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 script = ExtResource("2_js1e1")
+value = 111100
 
 [node name="MoneyBox" type="Panel" parent="."]
 layout_mode = 1
