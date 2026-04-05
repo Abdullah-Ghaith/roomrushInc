@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cb7g15hmonlr4"]
 
-[ext_resource type="Texture2D" uid="uid://d2fkk6nc3sfjs" path="res://Assets/Sprites/Loot/CoinPile.png" id="1_fs8ji"]
+[ext_resource type="Texture2D" uid="uid://d2fkk6nc3sfjs" path="res://Assets/Loot/CoinPile.png" id="1_fs8ji"]
 [ext_resource type="Shader" uid="uid://d0yapat3o3wae" path="res://UI/MoneyRequirement/money_requirement.gdshader" id="1_ye3r4"]
 [ext_resource type="Script" uid="uid://cwruuoq37y745" path="res://UI/MoneyRequirement/money_requirement.gd" id="2_js1e1"]
 [ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="2_ye3r4"]

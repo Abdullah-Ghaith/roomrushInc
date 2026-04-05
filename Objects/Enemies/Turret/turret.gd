@@ -7,6 +7,7 @@ class_name Turret extends Node2D
 @onready var turret_sprite: AnimatedSprite2D = $TurretSprite
 @onready var shoot_timer: Timer = %ShootTimer
 @onready var shooting_point: Marker2D = %ShootingPoint
+@onready var alert_sprite: Sprite2D = %AlertSprite
 
 enum State { IDLE, TRACKING, SEARCHING }
 
@@ -25,6 +26,7 @@ var _search_tween : Tween
 
 func _ready() -> void:
 	_randomize_search_params()
+	alert_sprite.position = self.position - Vector2(0, 60)
 
 func _randomize_search_params() -> void:
 	search_origin = rotation
@@ -51,7 +53,10 @@ func _physics_process(delta: float) -> void:
 				shoot_timer.start(shoot_timer.wait_time)
 			if _track_tween:
 				_track_tween.kill()
+			alert_sprite.show()
 			geometry_ray_cast.target_position = to_local(player_node.position)
+
+			## Track player if theyre not behind geometry, otherwise, enter search state
 			if not geometry_ray_cast.is_colliding():
 				var target_angle = get_angle_to(player_node.position)
 				_track_tween = create_tween()
@@ -62,6 +67,7 @@ func _physics_process(delta: float) -> void:
 
 		State.SEARCHING:
 			shoot_timer.stop()
+			alert_sprite.hide()
 			search_time += delta
 			if _search_tween:
 				_search_tween.kill()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://iricf2su4h65"]
+[gd_scene load_steps=14 format=3 uid="uid://iricf2su4h65"]
 
 [ext_resource type="Script" uid="uid://bswffbb2j0to5" path="res://Objects/Enemies/Turret/turret.gd" id="1_ldklw"]
 [ext_resource type="Texture2D" uid="uid://fhqb4qr7n30r" path="res://Assets/Enemy/Turret/turret_#1Sheet.png" id="2_el7kc"]
 [ext_resource type="PackedScene" uid="uid://cuj08f7v3uilh" path="res://Objects/Projectiles/EnemyProjectiles/CirclePulseProjectile.tscn" id="2_k63up"]
 [ext_resource type="Texture2D" uid="uid://dd0iiaq7dpyjg" path="res://Assets/Enemy/Turret/laser.png" id="2_ldklw"]
+[ext_resource type="Texture2D" uid="uid://d0sjos4xoretq" path="res://Assets/Icons/Alert.png" id="5_k63up"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k63up"]
 atlas = ExtResource("2_el7kc")
@@ -101,6 +102,12 @@ wait_time = 0.75
 [node name="ShootingPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(50.926983, 0.6651077)
+
+[node name="AlertSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+top_level = true
+scale = Vector2(2, 2)
+texture = ExtResource("5_k63up")
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
