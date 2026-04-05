@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://rk7riebu74vo"]
+
+[ext_resource type="Script" uid="uid://fhllsmyemmme" path="res://UI/Bars/WIPLevelProgressBar/wip_level_progress_bar.gd" id="1_bo0go"]
+[ext_resource type="Texture2D" uid="uid://b7xj62wruq4ov" path="res://Assets/UI/Bars/LoadingBar/LoadingBarFrame.png" id="1_iwb2x"]
+[ext_resource type="Texture2D" uid="uid://d1wermr6kaj2g" path="res://Assets/UI/Bars/LoadingBar/LoadingBarProgress.png" id="2_bo0go"]
+
+[node name="WIPLevelProgressBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 32.035
+scale = Vector2(1.555, 1.555)
+script = ExtResource("1_bo0go")
+
+[node name="LevelProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 32.0
+value = 100.0
+texture_over = ExtResource("1_iwb2x")
+texture_progress = ExtResource("2_bo0go")
+
+[node name="Panel" type="Panel" parent="LevelProgressBar"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

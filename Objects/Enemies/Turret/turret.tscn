@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fhqb4qr7n30r" path="res://Assets/Enemy/Turret/turret_#1Sheet.png" id="2_el7kc"]
 [ext_resource type="PackedScene" uid="uid://cuj08f7v3uilh" path="res://Objects/Projectiles/EnemyProjectiles/CirclePulseProjectile.tscn" id="2_k63up"]
 [ext_resource type="Texture2D" uid="uid://dd0iiaq7dpyjg" path="res://Assets/Enemy/Turret/laser.png" id="2_ldklw"]
-[ext_resource type="Texture2D" uid="uid://d0sjos4xoretq" path="res://Assets/Icons/Alert.png" id="5_k63up"]
+[ext_resource type="Texture2D" uid="uid://d0sjos4xoretq" path="res://Assets/UI/Icons/Alert.png" id="5_k63up"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k63up"]
 atlas = ExtResource("2_el7kc")

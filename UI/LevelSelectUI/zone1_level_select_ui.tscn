@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://37ib7y0pxa1l"]
+
+[ext_resource type="Texture2D" uid="uid://bd70bo3ix0une" path="res://Assets/UI/Panels/BluePanel.png" id="1_tuq3d"]
+[ext_resource type="PackedScene" uid="uid://rk7riebu74vo" path="res://UI/Bars/WIPLevelProgressBar/wip_level_progress_bar.tscn" id="2_ph3v6"]
+[ext_resource type="Texture2D" uid="uid://d13l5b6lhu36x" path="res://Assets/Kenney/kenney_desert-shooter-pack_1.0/PNG/Interface/Tilemap/tilemap.png" id="3_ph3v6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fykm"]
+texture = ExtResource("1_tuq3d")
+
+[sub_resource type="Theme" id="Theme_amn6t"]
+Panel/styles/panel = SubResource("StyleBoxTexture_6fykm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fykm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="LevelSelectUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.545, 1.545)
+
+[node name="BGPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 320.0
+theme = SubResource("Theme_amn6t")
+
+[node name="ScrollPanelContainer" type="PanelContainer" parent="BGPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -126.0
+offset_right = 136.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99864143, 0.9445552)
+theme_override_styles/panel = SubResource("StyleBoxFlat_6fykm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BGPanel/ScrollPanelContainer"]
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BGPanel/ScrollPanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 63
+
+[node name="WIPLevelProgressBar" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar"]
+position = Vector2(128, 15)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(71.663635, 85.898766, 8.51487, 14.208733)
+
+[node name="WIPLevelProgressBar2" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar2"]
+position = Vector2(128, 15)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(87.76325, 86.23567, 10.464546, 13.553482)
+
+[node name="WIPLevelProgressBar3" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar3"]
+position = Vector2(128, 15)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(104.82356, 86.05838, 10.609535, 13.660645)
+
+[node name="WIPLevelProgressBar4" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar4"]
+position = Vector2(128, 14.999992)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(121.92021, 86.4475, 10.4015045, 13.036552)
+
+[node name="WIPLevelProgressBar5" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar5"]
+position = Vector2(128, 16)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(138.97868, 86.17013, 10.1241455, 13.729988)
+
+[node name="WIPLevelProgressBar6" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="Sprite2D6" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar6"]
+position = Vector2(128, 15)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(155.27438, 86.308815, 11.3029785, 13.868675)
+
+[node name="DNE?" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
+layout_mode = 2
+
+[node name="DNE" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/DNE?"]
+position = Vector2(128, 15.999985)
+scale = Vector2(1.295, 1.295)
+texture = ExtResource("3_ph3v6")
+region_enabled = true
+region_rect = Rect2(173.09564, 86.23947, 10.332153, 13.38327)
