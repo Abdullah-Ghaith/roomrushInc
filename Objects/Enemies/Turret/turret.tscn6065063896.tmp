@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://iricf2su4h65"]
+
+[ext_resource type="Script" uid="uid://bswffbb2j0to5" path="res://Objects/Enemies/Turret/turret.gd" id="1_ldklw"]
+[ext_resource type="Texture2D" uid="uid://b1nb5rsfqqank" path="res://Assets/Enemy/Turret/turret_#1.png" id="1_wna7s"]
+[ext_resource type="Texture2D" uid="uid://dd0iiaq7dpyjg" path="res://Assets/Enemy/Turret/laser.png" id="2_ldklw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wna7s"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_ldklw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wna7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(71, 0)
+scale = Vector2(0.75379986, 0.22020996)
+texture = ExtResource("2_ldklw")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(22.195435, 0, 37.599533, 128)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+scale = Vector2(16.253426, 16.253426)
+shape = SubResource("CircleShape2D_wna7s")
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

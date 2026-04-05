@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg6bw7ck7ecg7"]
+
+[ext_resource type="Shader" uid="uid://davt2ymc4nlm0" path="res://Objects/VFX/BackGlow/backglow.gdshader" id="1_qv5et"]
+[ext_resource type="Texture2D" uid="uid://bg6qv2y4apf2u" path="res://Assets/VFX/BackGlowWhite.png" id="1_u7wm3"]
+[ext_resource type="Script" uid="uid://bhjwu5hn3nlu6" path="res://Objects/VFX/BackGlow/backglow.gd" id="3_7omf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qv5et"]
+shader = ExtResource("1_qv5et")
+shader_parameter/glow_color = Color(1.0961504, 1.0961504, 1.0961504, 0.54901963)
+shader_parameter/radius = 0.39
+
+[node name="BackGlow" type="Sprite2D"]
+material = SubResource("ShaderMaterial_qv5et")
+texture = ExtResource("1_u7wm3")
+script = ExtResource("3_7omf5")

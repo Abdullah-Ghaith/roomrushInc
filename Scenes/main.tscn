@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cu3e8qjbdtfh"]
+[gd_scene load_steps=8 format=4 uid="uid://cu3e8qjbdtfh"]
 
 [ext_resource type="PackedScene" uid="uid://cflslici83xri" path="res://Objects/TileMaps/bw_bg.tscn" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://c5x0uwhsvkay6" path="res://Objects/Player/player.tscn" id="1_bo1nx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btoqolbgefpo2" path="res://Objects/AttackDummy/dummy.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://c3wcsd3n4kc1w" path="res://UI/MoneyDisplay/money_display.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://n27njilct0md" path="res://Objects/Furniture/TransitionPortalDoor/transition_portal.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://iricf2su4h65" path="res://Objects/Enemies/Turret/turret.tscn" id="7_6bp64"]
 
 [node name="Main" type="Node2D"]
 
@@ -35,3 +36,6 @@ offset_bottom = -205.0
 
 [node name="TransitionPortal" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(802, 45)
+
+[node name="Turret" parent="." instance=ExtResource("7_6bp64")]
+position = Vector2(-158, -163)

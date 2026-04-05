@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://iricf2su4h65"]
+
+[ext_resource type="Script" uid="uid://bswffbb2j0to5" path="res://Objects/Enemies/Turret/turret.gd" id="1_ldklw"]
+[ext_resource type="Texture2D" uid="uid://fhqb4qr7n30r" path="res://Assets/Enemy/Turret/turret_#1Sheet.png" id="2_el7kc"]
+[ext_resource type="PackedScene" uid="uid://cuj08f7v3uilh" path="res://Objects/Projectiles/EnemyProjectiles/CirclePulseProjectile.tscn" id="2_k63up"]
+[ext_resource type="Texture2D" uid="uid://dd0iiaq7dpyjg" path="res://Assets/Enemy/Turret/laser.png" id="2_ldklw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k63up"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyv5q"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr60h"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_depy7"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj2nm"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fo5d"]
+atlas = ExtResource("2_el7kc")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyj1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k63up")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyv5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr60h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_depy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj2nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fo5d")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wna7s"]
+
+[node name="Turret" type="Node2D"]
+rotation = -0.7706868
+script = ExtResource("1_ldklw")
+bullet_scene = ExtResource("2_k63up")
+
+[node name="TurretSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qyj1e")
+animation = &"Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="TurretSprite"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(71, 0)
+scale = Vector2(0.75379986, 0.22020996)
+texture = ExtResource("2_ldklw")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(22.195435, 0, 37.599533, 128)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.343855, 1.3497454)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(3.8146973e-06, 0)
+scale = Vector2(23.858358, 23.858358)
+shape = SubResource("CircleShape2D_wna7s")
+
+[node name="GeometryRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(240, 0)
+collision_mask = 2
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(50.926983, 0.6651077)
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

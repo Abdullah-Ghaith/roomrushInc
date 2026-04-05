@@ -9,7 +9,6 @@ class_name range_weapon extends Node2D
 
 var curr_fire_cd : float = FIRE_CD 
 
-
 func _physics_process(delta: float) -> void:
 	# Rotate gun with mouse
 	var mouse_position = get_global_mouse_position()

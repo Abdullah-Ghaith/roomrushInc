@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuj08f7v3uilh"]
+
+[ext_resource type="Script" uid="uid://bvxm5tdamqg3y" path="res://Util/Classes/Projectiles/BasicBulletClass.gd" id="1_vveup"]
+[ext_resource type="Resource" uid="uid://dfo5n8x80vel1" path="res://Resources/Projectile/basic_bullet.tres" id="2_2x6n2"]
+[ext_resource type="PackedScene" uid="uid://dq47g0ev75owp" path="res://Objects/VFX/HitSpark/hit_spark.tscn" id="3_rxej2"]
+[ext_resource type="Texture2D" uid="uid://ivv7x1268xqr" path="res://Assets/Projectile/Enemy/CirclePulseProjectile.png" id="4_vveup"]
+[ext_resource type="PackedScene" uid="uid://cg6bw7ck7ecg7" path="res://Objects/VFX/BackGlow/backglow.tscn" id="5_5l3wa"]
+[ext_resource type="Shader" uid="uid://davt2ymc4nlm0" path="res://Objects/VFX/BackGlow/backglow.gdshader" id="6_2x6n2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6jxg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x6n2"]
+atlas = ExtResource("4_vveup")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxej2"]
+atlas = ExtResource("4_vveup")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qk6l"]
+atlas = ExtResource("4_vveup")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l3wa"]
+atlas = ExtResource("4_vveup")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxsxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x6n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxej2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qk6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l3wa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00bs0"]
+radius = 13.333333
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxej2"]
+shader = ExtResource("6_2x6n2")
+shader_parameter/glow_color = Color(0.5587212, 0.72840434, 0.8732699, 0.3137255)
+shader_parameter/radius = 0.215
+
+[node name="CirclePulseBullet" type="Area2D"]
+scale = Vector2(1.2, 1.2)
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("1_vveup")
+bullet_data = ExtResource("2_2x6n2")
+HIT_FX = Array[PackedScene]([ExtResource("3_rxej2")])
+metadata/_custom_type_script = "uid://bvxm5tdamqg3y"
+
+[node name="BulletSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_r6jxg")
+sprite_frames = SubResource("SpriteFrames_dxsxc")
+autoplay = "default"
+frame_progress = 0.9689619
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_00bs0")
+
+[node name="BackGlow" parent="." instance=ExtResource("5_5l3wa")]
+material = SubResource("ShaderMaterial_rxej2")
+glow_color = Color(0.73, 0.2336, 0.2666933, 0.8352941)
+glow_radius = 0.215
+
+[connection signal="area_entered" from="." to="." method="_on_hitbox_entered"]
