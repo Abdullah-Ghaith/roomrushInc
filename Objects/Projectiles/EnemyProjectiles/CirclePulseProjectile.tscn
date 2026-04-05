@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cuj08f7v3uilh"]
 
 [ext_resource type="Script" uid="uid://bvxm5tdamqg3y" path="res://Util/Classes/Projectiles/BasicBulletClass.gd" id="1_vveup"]
-[ext_resource type="Resource" uid="uid://dfo5n8x80vel1" path="res://Resources/Projectile/basic_bullet.tres" id="2_2x6n2"]
+[ext_resource type="Resource" uid="uid://graih2qwq1mh" path="res://Resources/Projectile/EnemyProjectiles/CircularPulseBullet.tres" id="2_2x6n2"]
 [ext_resource type="PackedScene" uid="uid://dq47g0ev75owp" path="res://Objects/VFX/HitSpark/hit_spark.tscn" id="3_rxej2"]
 [ext_resource type="Texture2D" uid="uid://ivv7x1268xqr" path="res://Assets/Projectile/Enemy/CirclePulseProjectile.png" id="4_vveup"]
 [ext_resource type="PackedScene" uid="uid://cg6bw7ck7ecg7" path="res://Objects/VFX/BackGlow/backglow.tscn" id="5_5l3wa"]
@@ -66,7 +66,7 @@ metadata/_custom_type_script = "uid://bvxm5tdamqg3y"
 material = SubResource("ShaderMaterial_r6jxg")
 sprite_frames = SubResource("SpriteFrames_dxsxc")
 autoplay = "default"
-frame_progress = 0.9689619
+frame_progress = 0.047958698
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_00bs0")
