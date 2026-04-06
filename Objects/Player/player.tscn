@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5x0uwhsvkay6"]
+[gd_scene load_steps=7 format=3 uid="uid://c5x0uwhsvkay6"]
 
 [ext_resource type="Script" uid="uid://xu1a36306xhx" path="res://Objects/Player/player.gd" id="1_yw17q"]
 [ext_resource type="Texture2D" uid="uid://p76ijsx8n27j" path="res://Assets/Player/main-player-syd-version.png" id="2_l2ya6"]
 [ext_resource type="PackedScene" uid="uid://52etfvfak5qv" path="res://Objects/Weapons/BasicGun/basic_gun.tscn" id="3_l2ya6"]
+[ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="4_o1rty"]
+[ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="5_t45n6"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_t45n6"]
+points = PackedVector2Array(33, -5, 69, -5, 51, -42)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
@@ -24,3 +29,20 @@ rotation = 0.0009770232
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_o1rty")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://2pfpvjm7krcb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-51, 23)
+shape = SubResource("ConvexPolygonShape2D_t45n6")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("5_t45n6")
+MAX_HEALTH = 1.0
+revive_on_death = false
+metadata/_custom_type_script = "uid://bwqr0iti8dnil"

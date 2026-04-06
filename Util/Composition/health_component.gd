@@ -3,14 +3,17 @@ class_name HealthComponent
 
 @export var MAX_HEALTH : float = 10.0 :
 	set(value):
+		if value > MAX_HEALTH:
+			health += value
 		MAX_HEALTH = value
-		health += value
+
 @export var revive_on_death : bool = true
 @export var revive_time : float = 0.3
 
 var health             : float
 
 signal damaged(amount: float, is_crit: bool)
+signal half_hp
 signal died()
 signal revived()
 
@@ -26,7 +29,10 @@ func take_damage(attack: Attack) -> void:
 	# Take Damage
 	health -= damage
 	damaged.emit(damage, is_crit)
-
+	
+	if health <= MAX_HEALTH/2:
+		half_hp.emit()
+	
 	if health <= 0:
 		_die()
 

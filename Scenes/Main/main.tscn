@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://37ib7y0pxa1l" path="res://UI/LevelSelectUI/zone1_level_select_ui.tscn" id="8_hryqi"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_hryqi")
 
 [node name="BW Background" parent="." instance=ExtResource("2_imbg2")]
@@ -38,7 +39,8 @@ unique_name_in_owner = true
 position = Vector2(802, 45)
 
 [node name="Turret" parent="." instance=ExtResource("8_2ok46")]
-position = Vector2(-158, -163)
+position = Vector2(-164, -160)
+range = 10.0
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 30.0

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://8sloiw13tmd6"]
+
+[ext_resource type="Texture2D" uid="uid://lxchc76b5g7c" path="res://Assets/AssetPacks/Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Particle FX/Fire_01.png" id="1_53xky"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w5edn"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_la0j6"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.16738552, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3bohi"]
+curve = SubResource("Curve_la0j6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ir2x4"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 15.96
+gravity = Vector3(0, -49, 0)
+scale_curve = SubResource("CurveTexture_3bohi")
+hue_variation_min = 0.009999977
+hue_variation_max = 0.059999976
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="OnFireParticles" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_w5edn")
+scale = Vector2(1.3238378, 1.3238378)
+amount = 108
+texture = ExtResource("1_53xky")
+lifetime = 1.35
+speed_scale = 0.8
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ir2x4")

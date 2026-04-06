@@ -3,7 +3,7 @@ class_name HitboxComponent
 
 
 @export var health_component : HealthComponent
-@onready var hitflash_animation_player: AnimationPlayer = %HitflashAnimationPlayer
+@onready var hitflash_animation_player: AnimationPlayer = %HitFlashAnimationPlayer
 
 
 func take_damage(attack: Attack):

@@ -159,7 +159,7 @@ texture_under = ExtResource("5_nkpjw")
 texture_progress = ExtResource("6_32kad")
 script = ExtResource("7_q0u85")
 
-[node name="HitflashAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_32kad")

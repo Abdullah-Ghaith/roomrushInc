@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7e6gnxer70y4"]
+
+[ext_resource type="Script" uid="uid://ctdy1j77keglf" path="res://Util/Managers/DeathManager/death_manager.gd" id="1_aan1b"]
+
+[node name="DeathManager" type="Node"]
+script = ExtResource("1_aan1b")

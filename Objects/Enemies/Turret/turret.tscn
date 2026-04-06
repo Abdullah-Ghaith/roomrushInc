@@ -1,10 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://iricf2su4h65"]
+[gd_scene load_steps=25 format=3 uid="uid://iricf2su4h65"]
 
 [ext_resource type="Script" uid="uid://bswffbb2j0to5" path="res://Objects/Enemies/Turret/turret.gd" id="1_ldklw"]
 [ext_resource type="Texture2D" uid="uid://fhqb4qr7n30r" path="res://Assets/Enemy/Turret/turret_#1Sheet.png" id="2_el7kc"]
 [ext_resource type="PackedScene" uid="uid://cuj08f7v3uilh" path="res://Objects/Projectiles/EnemyProjectiles/CirclePulseProjectile.tscn" id="2_k63up"]
 [ext_resource type="Texture2D" uid="uid://dd0iiaq7dpyjg" path="res://Assets/Enemy/Turret/laser.png" id="2_ldklw"]
+[ext_resource type="Shader" uid="uid://dl58oyh0pwrau" path="res://Util/Common Shaders/hit_flash.tres" id="3_3fo5d"]
+[ext_resource type="Script" uid="uid://b1chnqjx5mbnd" path="res://Objects/Enemies/Turret/turret_sprite.gd" id="4_depy7"]
 [ext_resource type="Texture2D" uid="uid://d0sjos4xoretq" path="res://Assets/UI/Icons/Alert.png" id="5_k63up"]
+[ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="6_eyv5q"]
+[ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="6_qr60h"]
+[ext_resource type="PackedScene" uid="uid://8sloiw13tmd6" path="res://Objects/VFX/OnFireFX/on_fire_particles.tscn" id="9_gj2nm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyj1e"]
+shader = ExtResource("3_3fo5d")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k63up"]
 atlas = ExtResource("2_el7kc")
@@ -62,15 +72,62 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wna7s"]
+radius = 10.785
 
-[node name="Turret" type="Node2D"]
-rotation = -0.7706868
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr60h"]
+radius = 9.938488
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_depy7"]
+size = Vector2(17.016907, 50.98981)
+
+[sub_resource type="Animation" id="Animation_3fo5d"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qyj1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eamoy"]
+_data = {
+&"RESET": SubResource("Animation_qyj1e"),
+&"hit_flash": SubResource("Animation_3fo5d")
+}
+
+[node name="Turret" type="Node2D" groups=["enemy"]]
+rotation = -4.262376
 script = ExtResource("1_ldklw")
 bullet_scene = ExtResource("2_k63up")
+range = 20.0
 
 [node name="TurretSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qyj1e")
 sprite_frames = SubResource("SpriteFrames_qyj1e")
 animation = &"Idle"
+script = ExtResource("4_depy7")
 
 [node name="Sprite2D" type="Sprite2D" parent="TurretSprite"]
 self_modulate = Color(0, 0, 0, 1)
@@ -83,13 +140,37 @@ region_rect = Rect2(22.195435, 0, 37.599533, 128)
 
 [node name="DetectionRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(1.343855, 1.3497454)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+[node name="DetectionRangeShape" type="CollisionShape2D" parent="DetectionRange"]
+unique_name_in_owner = true
 position = Vector2(3.8146973e-06, 0)
 scale = Vector2(23.858358, 23.858358)
 shape = SubResource("CircleShape2D_wna7s")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+visible = false
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("6_eyv5q")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://2pfpvjm7krcb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(4.192917, -1.555457)
+scale = Vector2(3.7242596, 3.7242596)
+shape = SubResource("CircleShape2D_qr60h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(42.04638, -0.3211956)
+shape = SubResource("RectangleShape2D_depy7")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_qr60h")
+metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 
 [node name="GeometryRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(240, 0)
@@ -105,9 +186,22 @@ position = Vector2(50.926983, 0.6651077)
 
 [node name="AlertSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 top_level = true
+position = Vector2(0, -60)
 scale = Vector2(1.448, 1.448)
 texture = ExtResource("5_k63up")
+
+[node name="OnFireParticles" parent="." instance=ExtResource("9_gj2nm")]
+top_level = true
+position = Vector2(0, -37)
+emitting = false
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_eamoy")
+}
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

@@ -1,6 +1,5 @@
 class_name Turret extends Node2D
 
-@export var bullet_scene : PackedScene = null
 
 @onready var detection_range: Area2D = %DetectionRange
 @onready var geometry_ray_cast: RayCast2D = $GeometryRayCast
@@ -8,6 +7,17 @@ class_name Turret extends Node2D
 @onready var shoot_timer: Timer = %ShootTimer
 @onready var shooting_point: Marker2D = %ShootingPoint
 @onready var alert_sprite: Sprite2D = %AlertSprite
+@onready var detection_range_shape: CollisionShape2D = %DetectionRangeShape
+@onready var health_component: HealthComponent = $HealthComponent
+
+@export var bullet_scene : PackedScene = null
+@export var range : float = 300.0:
+	set(value):
+		range = value
+		if detection_range_shape:
+			detection_range_shape.get_shape().radius = range
+@export var health : float = 10.0
+@onready var on_fire_particles: GPUParticles2D = $OnFireParticles
 
 enum State { IDLE, TRACKING, SEARCHING }
 
@@ -26,7 +36,12 @@ var _search_tween : Tween
 
 func _ready() -> void:
 	_randomize_search_params()
+	
+	# Configure Child Nodes
 	alert_sprite.position = self.position - Vector2(0, 60)
+	on_fire_particles.position = self.position - Vector2(0, 20)
+	detection_range_shape.get_shape().radius = range
+	health_component.health = health
 
 func _randomize_search_params() -> void:
 	search_origin = rotation

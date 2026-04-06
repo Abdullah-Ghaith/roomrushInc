@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bd70bo3ix0une" path="res://Assets/UI/Panels/BluePanel.png" id="1_tuq3d"]
 [ext_resource type="PackedScene" uid="uid://rk7riebu74vo" path="res://UI/Bars/WIPLevelProgressBar/wip_level_progress_bar.tscn" id="2_ph3v6"]
 [ext_resource type="PackedScene" uid="uid://1nui1cxhury1" path="res://Scenes/Zone1/Level1/zone_1_level_1.tscn" id="3_b6odg"]
-[ext_resource type="Texture2D" uid="uid://d13l5b6lhu36x" path="res://Assets/Kenney/kenney_desert-shooter-pack_1.0/PNG/Interface/Tilemap/tilemap.png" id="3_ph3v6"]
+[ext_resource type="Texture2D" uid="uid://d13l5b6lhu36x" path="res://Assets/AssetPacks/Kenney/kenney_desert-shooter-pack_1.0/PNG/Interface/Tilemap/tilemap.png" id="3_ph3v6"]
 [ext_resource type="PackedScene" uid="uid://cn02gavcyhamb" path="res://UI/Buttons/CloseButton/closebutton.tscn" id="5_dbtjx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fykm"]
