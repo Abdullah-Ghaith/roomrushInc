@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c37uprm441s3w"]
+
+[ext_resource type="Script" uid="uid://bi6edb5gs4bb5" path="res://Objects/Furniture/ExitPortal/exit_portal.gd" id="1_h2e5g"]
+[ext_resource type="Texture2D" uid="uid://b51sujx4lquqn" path="res://Assets/Furniture Objects/PortalDoor.png" id="2_jtulo"]
+[ext_resource type="PackedScene" uid="uid://e4xvyjgqayk6" path="res://Objects/VFX/Portal/portal.tscn" id="3_0igrp"]
+[ext_resource type="PackedScene" uid="uid://bn1wwlij1ua60" path="res://UI/Buttons/EToInteract/e_to_interact.tscn" id="4_i7sx6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw4m0"]
+size = Vector2(110.5, 88.5)
+
+[node name="ExitPortal" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_h2e5g")
+
+[node name="DoorSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.9780367, 1)
+texture = ExtResource("2_jtulo")
+
+[node name="PortalParticles" parent="." instance=ExtResource("3_0igrp")]
+unique_name_in_owner = true
+modulate = Color(0.6466756, 0.50502527, 0, 1)
+
+[node name="E-to-interact" parent="." instance=ExtResource("4_i7sx6")]
+unique_name_in_owner = true
+position = Vector2(0.5, -71.5)
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+visible = false
+position = Vector2(0.75, -0.75)
+shape = SubResource("RectangleShape2D_uw4m0")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_exited"]

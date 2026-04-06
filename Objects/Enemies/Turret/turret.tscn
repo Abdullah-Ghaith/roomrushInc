@@ -106,7 +106,7 @@ position = Vector2(50.926983, 0.6651077)
 [node name="AlertSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 top_level = true
-scale = Vector2(2, 2)
+scale = Vector2(1.448, 1.448)
 texture = ExtResource("5_k63up")
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]

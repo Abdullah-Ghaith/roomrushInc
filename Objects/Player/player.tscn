@@ -20,3 +20,7 @@ polygon = PackedVector2Array(-4.6598015, 11.114756, 14.911362, -25.649439, 34.48
 [node name="BasicGun" parent="." instance=ExtResource("3_l2ya6")]
 position = Vector2(9.536743e-07, 9.313226e-10)
 rotation = 0.0009770232
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0

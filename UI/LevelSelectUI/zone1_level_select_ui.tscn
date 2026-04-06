@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://37ib7y0pxa1l"]
+[gd_scene load_steps=9 format=3 uid="uid://37ib7y0pxa1l"]
 
 [ext_resource type="Texture2D" uid="uid://bd70bo3ix0une" path="res://Assets/UI/Panels/BluePanel.png" id="1_tuq3d"]
 [ext_resource type="PackedScene" uid="uid://rk7riebu74vo" path="res://UI/Bars/WIPLevelProgressBar/wip_level_progress_bar.tscn" id="2_ph3v6"]
+[ext_resource type="PackedScene" uid="uid://1nui1cxhury1" path="res://Scenes/Zone1/Level1/zone_1_level_1.tscn" id="3_b6odg"]
 [ext_resource type="Texture2D" uid="uid://d13l5b6lhu36x" path="res://Assets/Kenney/kenney_desert-shooter-pack_1.0/PNG/Interface/Tilemap/tilemap.png" id="3_ph3v6"]
+[ext_resource type="PackedScene" uid="uid://cn02gavcyhamb" path="res://UI/Buttons/CloseButton/closebutton.tscn" id="5_dbtjx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fykm"]
 texture = ExtResource("1_tuq3d")
@@ -59,6 +61,8 @@ theme_override_constants/separation = 63
 
 [node name="WIPLevelProgressBar" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
 layout_mode = 2
+level_scene = ExtResource("3_b6odg")
+unlocked = true
 
 [node name="Sprite2D" type="Sprite2D" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer/WIPLevelProgressBar"]
 position = Vector2(128, 15)
@@ -126,3 +130,13 @@ scale = Vector2(1.295, 1.295)
 texture = ExtResource("3_ph3v6")
 region_enabled = true
 region_rect = Rect2(173.09564, 86.23947, 10.332153, 13.38327)
+
+[node name="Closebutton" parent="." instance=ExtResource("5_dbtjx")]
+layout_mode = 0
+offset_left = 282.20065
+offset_top = 2.5889974
+offset_right = 346.20065
+offset_bottom = 66.589
+scale = Vector2(0.5545103, 0.5545103)
+
+[connection signal="pressed" from="Closebutton" to="Closebutton" method="_on_pressed"]

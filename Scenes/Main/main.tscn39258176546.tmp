@@ -19,6 +19,10 @@ tile_map_data = PackedByteArray("AAAAAPv/AAABAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAE
 [node name="Player" parent="." instance=ExtResource("3_hfg1r")]
 position = Vector2(27, -3)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("4_4e4y2")]
@@ -33,9 +37,9 @@ offset_top = -205.0
 offset_right = 209.0
 offset_bottom = -205.0
 
-[node name="Zone1TransitionPortal" parent="." instance=ExtResource("7_wliom")]
-unique_name_in_owner = true
+[node name="TransitionPortal" parent="." instance=ExtResource("7_wliom")]
 position = Vector2(802, 45)
+level_select_ui_ps = ExtResource("8_hryqi")
 
 [node name="Turret" parent="." instance=ExtResource("8_2ok46")]
 position = Vector2(-158, -163)
@@ -43,15 +47,5 @@ position = Vector2(-158, -163)
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Zone1LevelSelectUI" parent="CanvasLayer" instance=ExtResource("8_hryqi")]
-unique_name_in_owner = true
-visible = false
-offset_left = 1071.0
-offset_top = 602.0
-offset_right = -81.0
-offset_bottom = -46.0
 
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
