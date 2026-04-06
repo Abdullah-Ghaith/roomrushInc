@@ -9,6 +9,7 @@ class_name Turret extends Node2D
 @onready var alert_sprite: Sprite2D = %AlertSprite
 @onready var detection_range_shape: CollisionShape2D = %DetectionRangeShape
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var pointer: Sprite2D = %Pointer
 
 @export var bullet_scene : PackedScene = null
 @export var range : float = 300.0:
@@ -36,7 +37,7 @@ var _search_tween : Tween
 
 func _ready() -> void:
 	_randomize_search_params()
-	
+	health_component.died.connect(_handle_death)
 	# Configure Child Nodes
 	alert_sprite.position = self.position - Vector2(0, 60)
 	on_fire_particles.position = self.position - Vector2(0, 20)
@@ -99,6 +100,10 @@ func _physics_process(delta: float) -> void:
 				if not geometry_ray_cast.is_colliding():
 					state = State.TRACKING
 
+func _handle_death() -> void:
+	self.state = State.IDLE
+	pointer.hide()
+	detection_range.set_deferred("monitoring", false)
 
 func _on_shoot_timer_timeout() -> void:
 	turret_sprite.play("Shoot")

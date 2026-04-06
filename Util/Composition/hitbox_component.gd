@@ -11,3 +11,12 @@ func take_damage(attack: Attack):
 		health_component.take_damage(attack)
 		if hitflash_animation_player:
 			hitflash_animation_player.play("hit_flash")
+
+func _ready():
+	health_component.died.connect(func():
+		set_deferred("monitorable", false)
+		)
+	
+	health_component.revived.connect(func():
+		set_deferred("monitorable", true)
+		)

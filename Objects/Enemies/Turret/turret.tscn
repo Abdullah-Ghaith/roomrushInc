@@ -129,7 +129,8 @@ sprite_frames = SubResource("SpriteFrames_qyj1e")
 animation = &"Idle"
 script = ExtResource("4_depy7")
 
-[node name="Sprite2D" type="Sprite2D" parent="TurretSprite"]
+[node name="Pointer" type="Sprite2D" parent="TurretSprite"]
+unique_name_in_owner = true
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(71, 0)
 scale = Vector2(0.75379986, 0.22020996)
@@ -170,6 +171,7 @@ shape = SubResource("RectangleShape2D_depy7")
 [node name="HealthComponent" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_qr60h")
+revive_on_death = false
 metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 
 [node name="GeometryRayCast" type="RayCast2D" parent="."]
