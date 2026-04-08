@@ -1,0 +1,172 @@
+[gd_scene load_steps=13 format=3 uid="uid://bs220wy4ilxwo"]
+
+[ext_resource type="Script" uid="uid://kotqb3662cgo" path="res://Objects/Enemies/Aggressor/aggressor.gd" id="1_3co07"]
+[ext_resource type="Texture2D" uid="uid://dc462xwp78ylp" path="res://Assets/Enemy/square.png" id="1_cgmmy"]
+[ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="3_i3uge"]
+[ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="4_qh3ds"]
+[ext_resource type="Script" uid="uid://cxq6u2eugeka1" path="res://UI/DamageNumberSpawner.gd" id="5_b8er2"]
+[ext_resource type="LabelSettings" uid="uid://d3v8ph6gmu8nw" path="res://Resources/DamageNumberSpawnerLabels/basic.tres" id="6_b8er2"]
+[ext_resource type="PackedScene" uid="uid://bteead43xenfd" path="res://Objects/Enemies/Aggressor/aggressor_dusting_vfx.tscn" id="7_plb42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3co07"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkaq5"]
+size = Vector2(36, 40)
+
+[sub_resource type="Animation" id="Animation_qhy36"]
+resource_name = "Dust"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquareDusting:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SquareDusting:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2666667, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4s8ch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquareDusting:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SquareDusting:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ljof"]
+_data = {
+&"Dust": SubResource("Animation_qhy36"),
+&"RESET": SubResource("Animation_4s8ch")
+}
+
+[node name="Aggressor" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 18
+script = ExtResource("1_3co07")
+metadata/_custom_type_script = "uid://kotqb3662cgo"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_cgmmy")
+offset = Vector2(0, -15.945)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_3co07")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+autostart = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-14, -6)
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(14, -6)
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_i3uge")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://2pfpvjm7krcb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_kkaq5")
+debug_color = Color(0.7, 0, 0.45500007, 0.41960785)
+
+[node name="HealthComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_qh3ds")
+MAX_HEALTH = 6.0
+metadata/_custom_type_script = "uid://bwqr0iti8dnil"
+
+[node name="DamageNumberSpawner" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_b8er2")
+label_settings = ExtResource("6_b8er2")
+critical_hit_color = Color(0.61960787, 0.36862746, 0.05882353, 1)
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cxq6u2eugeka1"
+
+[node name="SquareDusting" parent="." instance=ExtResource("7_plb42")]
+position = Vector2(-16, -34)
+
+[node name="DustingAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_6ljof")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

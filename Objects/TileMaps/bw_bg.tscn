@@ -1,6 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://cflslici83xri"]
+[gd_scene load_steps=14 format=3 uid="uid://cflslici83xri"]
 
 [ext_resource type="Texture2D" uid="uid://b7n5roj7kv35u" path="res://Assets/Background/bw.png" id="1_xe712"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xe712"]
+vertices = PackedVector2Array(16, -8, -12, -8, -12, -12, 16, -12)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, -8, 16, -12, -12, -12, -12, -8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1uac2"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gtq2m"]
+vertices = PackedVector2Array(16, 12, -16, 12, -16, 8.5, 16, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 12, 16, 12, 16, 8, -16, 8.5)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6e001"]
+vertices = PackedVector2Array(16, -8, -16, -8, -16, -12, 16, -12)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -12, -16, -8, 16, -8, 16, -12)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7gyuj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v3feh"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_snwpc"]
+vertices = PackedVector2Array(16, 12, -16, 12, -16, 8, 16, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 12, -16, 8, 16, 8, 16, 12)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_btclb"]
+vertices = PackedVector2Array(12, -8, -16, -8, -16, -12, 12, -12)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(12, -8, 12, -12, -16, -12, -16, -8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_d4dck"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7maj7"]
+vertices = PackedVector2Array(16, 12, -16, 12, -16, 8.5, 16, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 12, 16, 12, 16, 8, -16, 8.5)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uac2"]
 texture = ExtResource("1_xe712")
@@ -11,16 +59,19 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -12, -12, -12, -12, 16, -16, 16)
 0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_xe712")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12, -16, -16, 16, -16, 16, -12)
 1:0/0/terrains_peering_bit/bottom_right_corner = 0
 1:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6e001")
 2:0/0 = 0
 2:0/0/terrain_set = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, -12, 12, -12, 12, 16, 16, 16)
 2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_btclb")
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -32,6 +83,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/0/terrains_peering_bit/right_side = 0
 0:1/0/terrains_peering_bit/bottom_right_corner = 0
 0:1/0/terrains_peering_bit/top_right_corner = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1uac2")
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
@@ -43,12 +95,15 @@ texture_region_size = Vector2i(32, 32)
 1:1/0/terrains_peering_bit/top_left_corner = 0
 1:1/0/terrains_peering_bit/top_side = 0
 1:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7gyuj")
+1:1/0/navigation_layer_1/polygon = SubResource("NavigationPolygon_v3feh")
 2:1/0 = 0
 2:1/0/terrain_set = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 12, -16, 12, 16, 16, 16)
 2:1/0/terrains_peering_bit/bottom_left_corner = 0
 2:1/0/terrains_peering_bit/left_side = 0
 2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_d4dck")
 3:1/0 = 0
 4:1/0 = 0
 5:1/0 = 0
@@ -58,16 +113,19 @@ texture_region_size = Vector2i(32, 32)
 0:2/0/terrain_set = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, 12, -12, 12, -12, -16, -16, -16)
 0:2/0/terrains_peering_bit/top_right_corner = 0
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gtq2m")
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 12, -16, 16, 16, 16, 16, 12)
 1:2/0/terrains_peering_bit/top_left_corner = 0
 1:2/0/terrains_peering_bit/top_side = 0
 1:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_snwpc")
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12, 12, 12, 12, -16, 16, -16)
 2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7maj7")
 3:2/0 = 0
 4:2/0 = 0
 5:2/0 = 0
@@ -120,6 +178,8 @@ physics_layer_0/collision_layer = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+navigation_layer_0/layers = 1
+navigation_layer_1/layers = 2
 sources/0 = SubResource("TileSetAtlasSource_1uac2")
 
 [node name="BW Background" type="TileMapLayer"]

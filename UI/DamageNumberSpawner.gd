@@ -5,7 +5,7 @@ const TOP_Z_LEVEL : int = 1000
 @export var label_settings: LabelSettings
 @export var critical_hit_color: Color = Color(0.0, 0.5, 0.5, 1.0)
 
-@onready var health_component: HealthComponent = %HealthComponent
+@export var health_component: HealthComponent
 
 func _ready() -> void:
 	health_component.damaged.connect(func(_amount, _is_crit):

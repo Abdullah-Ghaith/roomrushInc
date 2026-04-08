@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://btoqolbgefpo2"]
+[gd_scene load_steps=23 format=3 uid="uid://btoqolbgefpo2"]
 
 [ext_resource type="Script" uid="uid://dr1s3xtmtoard" path="res://Objects/AttackDummy/dummy.gd" id="1_32kad"]
 [ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="1_e01fk"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bb3nl1y02yslk" path="res://Assets/UI/Bars/HealthBar/WhiteProgressBar.png" id="6_32kad"]
 [ext_resource type="Script" uid="uid://dxpctsww8bvsr" path="res://Objects/AttackDummy/hp_bar.gd" id="7_q0u85"]
 [ext_resource type="Script" uid="uid://cxq6u2eugeka1" path="res://UI/DamageNumberSpawner.gd" id="10_13ycl"]
-[ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="11_x2n41"]
+[ext_resource type="LabelSettings" uid="uid://d3v8ph6gmu8nw" path="res://Resources/DamageNumberSpawnerLabels/basic.tres" id="11_x2n41"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlbyr"]
 shader = ExtResource("2_4s70h")
@@ -101,13 +101,6 @@ _data = {
 &"hit_flash": SubResource("Animation_2qekd")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_x2n41"]
-font = ExtResource("11_x2n41")
-font_size = 32
-font_color = Color(0, 0.5019608, 0.5019608, 1)
-outline_size = 3
-outline_color = Color(0.017732391, 0.017732391, 0.01773239, 1)
-
 [node name="Dummy" type="Node2D"]
 script = ExtResource("1_32kad")
 
@@ -143,6 +136,7 @@ shape = SubResource("RectangleShape2D_x2n41")
 [node name="HealthComponent" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_4s70h")
+revive_on_death = true
 revive_time = 3.0
 metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 
@@ -165,9 +159,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_32kad")
 }
 
-[node name="DamageNumberSpawner" type="Node2D" parent="."]
+[node name="DamageNumberSpawner" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 position = Vector2(0, -14)
 script = ExtResource("10_13ycl")
-label_settings = SubResource("LabelSettings_x2n41")
+label_settings = ExtResource("11_x2n41")
 critical_hit_color = Color(0.6214219, 0.3684346, 0.060439974, 1)
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"

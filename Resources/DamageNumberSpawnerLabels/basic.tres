@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d3v8ph6gmu8nw"]
+
+[ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="1_y4rw5"]
+
+[resource]
+font = ExtResource("1_y4rw5")
+font_size = 32
+font_color = Color(0, 0.5019608, 0.5019608, 1)
+outline_size = 3
+outline_color = Color(0.017732391, 0.017732391, 0.01773239, 1)

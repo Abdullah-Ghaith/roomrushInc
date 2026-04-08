@@ -111,6 +111,6 @@ func _on_shoot_timer_timeout() -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = shooting_point.global_position
 	bullet.global_rotation = shooting_point.global_rotation
-	shooting_point.add_child(bullet) #TODO this should be added to the tree for when the turret is destroyed
+	get_tree().root.add_child(bullet)
 	turret_sprite.play("Idle")
 	shoot_timer.start(shoot_timer.wait_time)

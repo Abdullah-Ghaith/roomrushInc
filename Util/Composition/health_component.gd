@@ -7,7 +7,7 @@ class_name HealthComponent
 			health += value
 		MAX_HEALTH = value
 
-@export var revive_on_death : bool = true
+@export var revive_on_death : bool = false
 @export var revive_time : float = 0.3
 
 var health             : float
