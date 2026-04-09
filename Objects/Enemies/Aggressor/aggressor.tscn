@@ -8,14 +8,18 @@
 [ext_resource type="LabelSettings" uid="uid://d3v8ph6gmu8nw" path="res://Resources/DamageNumberSpawnerLabels/basic.tres" id="6_b8er2"]
 [ext_resource type="PackedScene" uid="uid://bteead43xenfd" path="res://Objects/Enemies/Aggressor/aggressor_dusting_vfx.tscn" id="7_plb42"]
 [ext_resource type="Script" uid="uid://clwdertdfw2qc" path="res://Util/Classes/AttackBox/MeleeAttackBox.gd" id="8_qhy36"]
-[ext_resource type="Script" uid="uid://bkaqjj55coawv" path="res://Util/Classes/AttackBox/MeleeData.gd" id="9_4s8ch"]
+[ext_resource type="Resource" uid="uid://b01r58ssqw43m" path="res://Resources/MeleeAttacks/Enemies/agressor.tres" id="9_6ljof"]
 [ext_resource type="PackedScene" uid="uid://dq47g0ev75owp" path="res://Objects/VFX/HitSpark/hit_spark.tscn" id="10_6ljof"]
+[ext_resource type="Script" uid="uid://bbykee8631tfx" path="res://Util/Composition/knockback_component.gd" id="11_8a0py"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3co07"]
 radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkaq5"]
 size = Vector2(36, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s8ch"]
+size = Vector2(32, 36)
 
 [sub_resource type="Animation" id="Animation_qhy36"]
 resource_name = "Dust"
@@ -102,13 +106,6 @@ _data = {
 &"RESET": SubResource("Animation_4s8ch")
 }
 
-[sub_resource type="Resource" id="Resource_6ljof"]
-script = ExtResource("9_4s8ch")
-metadata/_custom_type_script = "uid://bkaqjj55coawv"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s8ch"]
-size = Vector2(32, 36)
-
 [node name="Aggressor" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 18
@@ -172,20 +169,17 @@ horizontal_spread = Vector2(-10, 10)
 vertical_rise = Vector2(-88, -64)
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
-[node name="SquareDusting" parent="." instance=ExtResource("7_plb42")]
-position = Vector2(-16, -34)
-
-[node name="DustingAnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_6ljof")
-}
+[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
+script = ExtResource("11_8a0py")
+hitbox_component = NodePath("../HitboxComponent")
+character_body = NodePath("..")
+metadata/_custom_type_script = "uid://bbykee8631tfx"
 
 [node name="meleeAttackBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("8_qhy36")
-melee_data = SubResource("Resource_6ljof")
+melee_data = ExtResource("9_6ljof")
 health_component = NodePath("../HealthComponent")
 HIT_FX = Array[PackedScene]([ExtResource("10_6ljof")])
 metadata/_custom_type_script = "uid://clwdertdfw2qc"
@@ -194,6 +188,15 @@ metadata/_custom_type_script = "uid://clwdertdfw2qc"
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_4s8ch")
 debug_color = Color(0.7019608, 0, 0.45490196, 0.41960785)
+
+[node name="SquareDusting" parent="." instance=ExtResource("7_plb42")]
+position = Vector2(-16, -34)
+
+[node name="DustingAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_6ljof")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="meleeAttackBox" to="meleeAttackBox" method="_on_area_entered"]

@@ -12,6 +12,7 @@ class_name PlatformerEnemy extends CharacterBody2D
 # -- Tuning --
 @export var movement_speed: float = 180.0
 @export var jump_force: float = 500.0
+@export var knockback_friction: float = 800.0  # how fast knockback decelerates
 
 const LEDGE_NUDGE_SPEED: float = 30.0
 const SMALL_JUMP_RATIO: float = 3.0
@@ -21,6 +22,9 @@ const JUMP_HEIGHT_THRESHOLD: float = 10.0  # min Y diff to trigger a jump
 # -- State --
 var player: CharacterBody2D = null
 var was_on_floor: bool = true
+var knockback_velocity: Vector2 = Vector2.ZERO
+
+
 
 # ============================================================
 
@@ -36,6 +40,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not player:
 		return
+
+	# drain knockback over time
+	if knockback_velocity != Vector2.ZERO:
+		velocity = knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
+		move_and_slide()
+		return  # skip nav while being knocked back
+
 	if _handle_navigation_finished():
 		return
 	if not nav_agent.is_target_reached():
@@ -98,6 +110,11 @@ func _try_ledge_aid(nav_direction: Vector2) -> void:
 
 func _small_jump() -> void:
 	velocity.y = -jump_force / SMALL_JUMP_RATIO
+
+func apply_knockback(force: Vector2) -> void:
+	knockback_velocity = force
+
+# ============================================================
 
 func _on_timer_timeout() -> void:
 	if nav_agent.target_position != player.global_position:

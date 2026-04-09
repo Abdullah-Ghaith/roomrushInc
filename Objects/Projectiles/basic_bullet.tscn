@@ -20,7 +20,7 @@ shader_parameter/radius = 0.215
 [node name="basicBullet" type="Area2D"]
 scale = Vector2(1.2, 1.2)
 collision_layer = 8
-collision_mask = 32
+collision_mask = 34
 script = ExtResource("1_vfe2u")
 bullet_data = ExtResource("2_8k1wl")
 HIT_FX = Array[PackedScene]([ExtResource("3_3sfd8")])
@@ -39,3 +39,4 @@ glow_color = Color(0.5587212, 0.72840434, 0.8732699, 0.3137255)
 glow_radius = 0.215
 
 [connection signal="area_entered" from="." to="." method="_on_hitbox_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

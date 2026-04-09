@@ -10,4 +10,5 @@ lifetime = 0.5
 damage = 1.9
 crit_chance = 20.0
 crit_modifier = 2.0
+knockback = 0.1
 metadata/_custom_type_script = "uid://yj2y0f6kxobd"
