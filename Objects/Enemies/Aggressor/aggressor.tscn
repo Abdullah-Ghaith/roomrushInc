@@ -166,8 +166,10 @@ metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 [node name="DamageNumberSpawner" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("5_b8er2")
 label_settings = ExtResource("6_b8er2")
-critical_hit_color = Color(0.61960787, 0.36862746, 0.05882353, 1)
 health_component = NodePath("../HealthComponent")
+critical_hit_color = Color(0.61960787, 0.36862746, 0.05882353, 1)
+horizontal_spread = Vector2(-10, 10)
+vertical_rise = Vector2(-88, -64)
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
 [node name="SquareDusting" parent="." instance=ExtResource("7_plb42")]

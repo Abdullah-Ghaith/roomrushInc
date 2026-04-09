@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://iricf2su4h65"]
+[gd_scene load_steps=27 format=3 uid="uid://iricf2su4h65"]
 
 [ext_resource type="Script" uid="uid://bswffbb2j0to5" path="res://Objects/Enemies/Turret/turret.gd" id="1_ldklw"]
 [ext_resource type="Texture2D" uid="uid://fhqb4qr7n30r" path="res://Assets/Enemy/Turret/turret_#1Sheet.png" id="2_el7kc"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="6_eyv5q"]
 [ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="6_qr60h"]
 [ext_resource type="PackedScene" uid="uid://8sloiw13tmd6" path="res://Objects/VFX/OnFireFX/on_fire_particles.tscn" id="9_gj2nm"]
+[ext_resource type="Script" uid="uid://cxq6u2eugeka1" path="res://UI/DamageNumberSpawner.gd" id="11_eamoy"]
+[ext_resource type="LabelSettings" uid="uid://d3v8ph6gmu8nw" path="res://Resources/DamageNumberSpawnerLabels/basic.tres" id="12_abwvm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qyj1e"]
 shader = ExtResource("3_3fo5d")
@@ -80,6 +82,21 @@ radius = 9.938488
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_depy7"]
 size = Vector2(17.016907, 50.98981)
 
+[sub_resource type="Animation" id="Animation_qyj1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_3fo5d"]
 resource_name = "hit_flash"
 length = 0.2
@@ -94,21 +111,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_qyj1e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TurretSprite:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eamoy"]
@@ -171,7 +173,6 @@ shape = SubResource("RectangleShape2D_depy7")
 [node name="HealthComponent" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_qr60h")
-revive_on_death = false
 metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 
 [node name="GeometryRayCast" type="RayCast2D" parent="."]
@@ -204,6 +205,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_eamoy")
 }
+
+[node name="DamageNumberSpawner" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("11_eamoy")
+label_settings = ExtResource("12_abwvm")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
