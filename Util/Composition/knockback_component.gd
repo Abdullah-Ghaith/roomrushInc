@@ -17,3 +17,5 @@ func _apply_knockback(attack: Attack) -> void:
 	var force = knockback_direction * attack.knockback_force * knockback_multiplier
 	if character_body.has_method("apply_knockback"):
 		character_body.apply_knockback(force)
+	else:
+		character_body.velocity += force

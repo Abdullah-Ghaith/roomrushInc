@@ -29,5 +29,3 @@ func _on_area_entered(area: Area2D) -> void:
 			fx_node.rotation = randf_range(-0.3, 0.3)
 			# add to root so it doesn't get freed with the bullet
 			get_tree().root.add_child(fx_node)  
-		
-		queue_free()
