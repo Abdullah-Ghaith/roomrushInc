@@ -5,6 +5,7 @@ extends Control
 @onready var decay_timer: Timer = %DecayTimer
 @onready var number: RichTextLabel = %Number
 @onready var combo_progress_bar: TextureProgressBar = %ComboProgressBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const MAX_PROGRESS:       float = 100.0
 
@@ -27,6 +28,7 @@ func _process(delta: float) -> void:
 
 func _reset_combo_bar() -> void:
 	combo_bar_lvl = 1
+	animation_player.stop()
 	update_count_label()
 	combo_progress_bar.set_value_no_signal(combo_progress_bar.max_value)
 	
@@ -34,6 +36,7 @@ func _reset_combo_bar() -> void:
 	tween.tween_property(self, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE)
 
 func _start_combo() -> void:
+	animation_player.play("active")
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 0.3).set_trans(Tween.TRANS_SINE)
 
