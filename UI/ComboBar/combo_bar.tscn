@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://daqfjeu1rx1jg"]
+
+[ext_resource type="Texture2D" uid="uid://dlcakyg7o0j6x" path="res://Assets/UI/Bars/ComboBar/Spinner.png" id="1_2em34"]
+[ext_resource type="Script" uid="uid://bpbc3n8gjrbcn" path="res://UI/ComboBar/combo_bar.gd" id="1_aqdh5"]
+[ext_resource type="Texture2D" uid="uid://b6d8063qx7bs3" path="res://Assets/UI/Bars/ComboBar/ComboBarOutline.png" id="2_aqdh5"]
+[ext_resource type="Texture2D" uid="uid://0go7d4ggpbfv" path="res://Assets/UI/Bars/ComboBar/ComboBarFill.png" id="3_p5p2y"]
+[ext_resource type="Script" uid="uid://cp403qx07tw3b" path="res://Util/RichTextEffects/MatrixEffect.gd" id="4_x2yse"]
+
+[sub_resource type="Animation" id="Animation_c0l8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinner:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spinner:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.42990994, 0.9219482, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p4tco"]
+resource_name = "active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinner:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.566370614359172]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spinner:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.42990994, 0.9219482, 1), Color(1, 1, 1, 1), Color(0, 0.43137255, 0.92156863, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqy3u"]
+_data = {
+&"RESET": SubResource("Animation_c0l8d"),
+&"active": SubResource("Animation_p4tco")
+}
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_785b1"]
+script = ExtResource("4_x2yse")
+metadata/_custom_type_script = "uid://cp403qx07tw3b"
+
+[node name="ComboBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 40.0
+script = ExtResource("1_aqdh5")
+
+[node name="Spinner" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.42990994, 0.9219482, 1)
+position = Vector2(10, 8)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_2em34")
+
+[node name="ComboProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 25.0
+offset_right = 141.0
+offset_bottom = 65.0
+texture_under = ExtResource("2_aqdh5")
+texture_progress = ExtResource("3_p5p2y")
+texture_progress_offset = Vector2(6, 6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mqy3u")
+}
+
+[node name="Number" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = -11.0
+offset_right = 36.0
+offset_bottom = 29.0
+bbcode_enabled = true
+text = "[font=Assets/Fonts/zig.ttf][font_size=20][wave][outline_color=4768cf][outline_size=15][wave amp=5][wave freq=1][matrix qrclean=2.0 dirty=0.4 span=24]1![/matrix]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_785b1")]
+
+[node name="DecayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.33
+autostart = true
+
+[connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]
