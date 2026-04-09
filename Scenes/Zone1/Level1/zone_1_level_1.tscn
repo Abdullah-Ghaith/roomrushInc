@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://1nui1cxhury1"]
+[gd_scene load_steps=10 format=4 uid="uid://1nui1cxhury1"]
 
 [ext_resource type="PackedScene" uid="uid://cflslici83xri" path="res://Objects/TileMaps/bw_bg.tscn" id="1_yx6dk"]
 [ext_resource type="PackedScene" uid="uid://c5x0uwhsvkay6" path="res://Objects/Player/player.tscn" id="2_hiqor"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://iricf2su4h65" path="res://Objects/Enemies/Turret/turret.tscn" id="4_lkfdt"]
 [ext_resource type="PackedScene" uid="uid://b7277pb3xk3hp" path="res://Objects/Platform/basic_blue_oneway.tscn" id="5_nv23k"]
 [ext_resource type="PackedScene" uid="uid://bs220wy4ilxwo" path="res://Objects/Enemies/Aggressor/aggressor.tscn" id="6_dgtes"]
+[ext_resource type="PackedScene" uid="uid://daqfjeu1rx1jg" path="res://UI/ComboBar/combo_bar.tscn" id="7_0nhvh"]
+[ext_resource type="Script" uid="uid://ctdy1j77keglf" path="res://Util/Managers/DeathManager/death_manager.gd" id="8_mfm6b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lkfdt"]
 vertices = PackedVector2Array(-2.4296875, 446.47656, -1.5703125, 465.5, -141.36719, 465.5, -139.61719, 445.5, 202.5, 426.5, 62.5, 426.5, 62.5, 412.5, 202.5, 412.5)
@@ -77,3 +79,11 @@ velocity = Vector2(-1030.2628, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_hiqor")]
 position = Vector2(421, 549)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ComboBar" parent="CanvasLayer" instance=ExtResource("7_0nhvh")]
+
+[node name="DeathManager" type="Node" parent="."]
+script = ExtResource("8_mfm6b")
+metadata/_custom_type_script = "uid://ctdy1j77keglf"

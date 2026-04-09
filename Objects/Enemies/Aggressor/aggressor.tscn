@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs220wy4ilxwo"]
+[gd_scene load_steps=18 format=3 uid="uid://bs220wy4ilxwo"]
 
 [ext_resource type="Script" uid="uid://kotqb3662cgo" path="res://Objects/Enemies/Aggressor/aggressor.gd" id="1_3co07"]
 [ext_resource type="Texture2D" uid="uid://dc462xwp78ylp" path="res://Assets/Enemy/square.png" id="1_cgmmy"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://cxq6u2eugeka1" path="res://UI/DamageNumberSpawner.gd" id="5_b8er2"]
 [ext_resource type="LabelSettings" uid="uid://d3v8ph6gmu8nw" path="res://Resources/DamageNumberSpawnerLabels/basic.tres" id="6_b8er2"]
 [ext_resource type="PackedScene" uid="uid://bteead43xenfd" path="res://Objects/Enemies/Aggressor/aggressor_dusting_vfx.tscn" id="7_plb42"]
+[ext_resource type="Script" uid="uid://clwdertdfw2qc" path="res://Util/Classes/AttackBox/MeleeAttackBox.gd" id="8_qhy36"]
+[ext_resource type="Script" uid="uid://bkaqjj55coawv" path="res://Util/Classes/AttackBox/MeleeData.gd" id="9_4s8ch"]
+[ext_resource type="PackedScene" uid="uid://dq47g0ev75owp" path="res://Objects/VFX/HitSpark/hit_spark.tscn" id="10_6ljof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3co07"]
 radius = 12.0
@@ -99,6 +102,13 @@ _data = {
 &"RESET": SubResource("Animation_4s8ch")
 }
 
+[sub_resource type="Resource" id="Resource_6ljof"]
+script = ExtResource("9_4s8ch")
+metadata/_custom_type_script = "uid://bkaqjj55coawv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s8ch"]
+size = Vector2(32, 36)
+
 [node name="Aggressor" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 18
@@ -145,7 +155,7 @@ metadata/_custom_type_script = "uid://2pfpvjm7krcb"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_kkaq5")
-debug_color = Color(0.7, 0, 0.45500007, 0.41960785)
+debug_color = Color(0.15294118, 0.7019608, 0, 0.41960785)
 
 [node name="HealthComponent" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -169,4 +179,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_6ljof")
 }
 
+[node name="meleeAttackBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_qhy36")
+melee_data = SubResource("Resource_6ljof")
+health_component = NodePath("../HealthComponent")
+HIT_FX = Array[PackedScene]([ExtResource("10_6ljof")])
+metadata/_custom_type_script = "uid://clwdertdfw2qc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="meleeAttackBox"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_4s8ch")
+debug_color = Color(0.7019608, 0, 0.45490196, 0.41960785)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="meleeAttackBox" to="meleeAttackBox" method="_on_area_entered"]

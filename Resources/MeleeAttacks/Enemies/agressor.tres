@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="meleeData" load_steps=2 format=3 uid="uid://b01r58ssqw43m"]
+
+[ext_resource type="Script" uid="uid://bkaqjj55coawv" path="res://Util/Classes/AttackBox/MeleeData.gd" id="1_s1wg3"]
+
+[resource]
+script = ExtResource("1_s1wg3")
+damage = 1.0
+metadata/_custom_type_script = "uid://bkaqjj55coawv"

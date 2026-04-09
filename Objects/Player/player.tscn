@@ -43,6 +43,5 @@ shape = SubResource("ConvexPolygonShape2D_t45n6")
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("5_t45n6")
-MAX_HEALTH = 1.0
-revive_on_death = false
+MAX_HEALTH = 3.0
 metadata/_custom_type_script = "uid://bwqr0iti8dnil"
