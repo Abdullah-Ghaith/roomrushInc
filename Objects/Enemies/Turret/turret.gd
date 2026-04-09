@@ -101,6 +101,7 @@ func _physics_process(delta: float) -> void:
 					state = State.TRACKING
 
 func _handle_death() -> void:
+	CombatBus.enemyDied.emit()
 	self.state = State.IDLE
 	pointer.hide()
 	detection_range.set_deferred("monitoring", false)

@@ -21,6 +21,7 @@ Globals="*res://Util/Autoloads/Globals.gd"
 SignalBus="*res://Util/Autoloads/SignalBus.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 SaveManager="*res://Util/Autoloads/save_manager.gd"
+CombatBus="*res://Util/Autoloads/CombatBus.gd"
 
 [editor_plugins]
 

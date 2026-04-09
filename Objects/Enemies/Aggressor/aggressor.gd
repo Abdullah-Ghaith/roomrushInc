@@ -27,6 +27,7 @@ var was_on_floor: bool = true
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	health_component.died.connect(func(): 
+		CombatBus.enemyDied.emit()
 		dusting_animation_player.play("Dust")
 		await dusting_animation_player.animation_finished
 		self.queue_free()
