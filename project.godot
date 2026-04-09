@@ -40,7 +40,7 @@ folder_colors={
 [global_group]
 
 Player=""
-enemy=""
+Enemy=""
 
 [input]
 

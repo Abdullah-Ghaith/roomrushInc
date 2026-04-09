@@ -1,4 +1,4 @@
-extends Node2D
+class_name eToInteract extends Node2D
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 

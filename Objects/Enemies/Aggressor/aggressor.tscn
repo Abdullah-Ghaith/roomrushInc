@@ -169,7 +169,7 @@ horizontal_spread = Vector2(-10, 10)
 vertical_rise = Vector2(-88, -64)
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
+[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body") groups=["Enemy"]]
 script = ExtResource("11_8a0py")
 hitbox_component = NodePath("../HitboxComponent")
 character_body = NodePath("..")
