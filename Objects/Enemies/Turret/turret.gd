@@ -101,6 +101,7 @@ func _physics_process(delta: float) -> void:
 					state = State.TRACKING
 
 func _handle_death() -> void:
+	self.remove_from_group("Enemy")
 	CombatBus.enemyDied.emit()
 	self.state = State.IDLE
 	pointer.hide()

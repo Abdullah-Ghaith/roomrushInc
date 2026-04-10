@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bs220wy4ilxwo"]
+[gd_scene load_steps=19 format=3 uid="uid://bs220wy4ilxwo"]
 
 [ext_resource type="Script" uid="uid://kotqb3662cgo" path="res://Objects/Enemies/Aggressor/aggressor.gd" id="1_3co07"]
 [ext_resource type="Texture2D" uid="uid://dc462xwp78ylp" path="res://Assets/Enemy/square.png" id="1_cgmmy"]
@@ -14,6 +14,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3co07"]
 radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8a0py"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkaq5"]
 size = Vector2(36, 40)
@@ -119,6 +121,16 @@ offset = Vector2(0, -15.945)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_3co07")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(11.000001, -18.000002)
+scale = Vector2(0.80390227, 0.80390227)
+shape = SubResource("CircleShape2D_8a0py")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-10.999999, -18.000002)
+scale = Vector2(0.80390227, 0.80390227)
+shape = SubResource("CircleShape2D_8a0py")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
