@@ -21,8 +21,10 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and player_nearby and enabled:
 		transition_portal_interact.emit()
-		print("interacted")
-		
+		#Placeholder
+		SceneManager.change_scene("res://Scenes/Main/main.tscn", {"speed": 4, "pattern": "curtains"})
+
+
 func enable(enable: bool) -> void:
 	portal_particles.emitting = enable
 

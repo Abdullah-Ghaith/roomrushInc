@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="IncrementalRoomRush"
-run/main_scene="uid://1nui1cxhury1"
+run/main_scene="uid://cu3e8qjbdtfh"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://Util/Autoloads/Globals.gd"
 SignalBus="*res://Util/Autoloads/SignalBus.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
-SaveManager="*res://Util/Autoloads/save_manager.gd"
+SaveManager="*res://Util/Autoloads/SaveManager.gd"
 CombatBus="*res://Util/Autoloads/CombatBus.gd"
 
 [editor_plugins]

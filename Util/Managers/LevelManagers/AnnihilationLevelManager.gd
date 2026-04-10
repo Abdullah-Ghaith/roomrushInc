@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _check_for_annihilation() -> void:
 	enemies = get_tree().get_nodes_in_group("Enemy")
+	print(player)
 	if enemies.is_empty():
 		SignalBus.level_clear.emit()
 	else:

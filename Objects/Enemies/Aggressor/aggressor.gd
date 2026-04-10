@@ -29,7 +29,6 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 # ============================================================
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player")
 	health_component.died.connect(func(): 
 		self.remove_from_group("Enemy")
 		CombatBus.enemyDied.emit()
@@ -37,6 +36,7 @@ func _ready() -> void:
 		await dusting_animation_player.animation_finished
 		self.queue_free()
 		)
+
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -118,6 +118,10 @@ func apply_knockback(force: Vector2) -> void:
 # ============================================================
 
 func _on_timer_timeout() -> void:
+	if not player:
+		nav_update_timer.start()
+		player = get_tree().get_first_node_in_group("Player")
+		return
 	if nav_agent.target_position != player.global_position:
 		nav_agent.target_position = player.global_position
 	nav_agent.get_next_path_position()

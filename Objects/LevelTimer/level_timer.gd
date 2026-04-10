@@ -26,3 +26,6 @@ func _update_stopwatch_label() -> void:
 func _on_level_clear() -> void:
 	running = false
 	animation_player.play("buh_blink", -1, 0.5)
+
+	var scene_path = get_tree().current_scene.scene_file_path
+	SignalBus.level_completed.emit(scene_path, elapsed_time)
