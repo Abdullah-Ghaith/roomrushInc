@@ -108,7 +108,7 @@ _data = {
 &"RESET": SubResource("Animation_4s8ch")
 }
 
-[node name="Aggressor" type="CharacterBody2D"]
+[node name="Aggressor" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 16
 collision_mask = 18
 script = ExtResource("1_3co07")
@@ -181,7 +181,7 @@ horizontal_spread = Vector2(-10, 10)
 vertical_rise = Vector2(-88, -64)
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body") groups=["Enemy"]]
+[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
 script = ExtResource("11_8a0py")
 hitbox_component = NodePath("../HitboxComponent")
 character_body = NodePath("..")

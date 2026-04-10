@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://bml1mry3eaiyc"]
+
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/EnemyUpgrade/SkillIcons/96x96/skill_icons16.png" id="1_6vlyn"]
+[ext_resource type="Script" uid="uid://cmpgcplnel2st" path="res://UI/SkillTree/skillbutton.gd" id="2_aqib5"]
+[ext_resource type="Script" path="res://Util/Classes/Upgrades/upgrade_effect.gd" id="3_aqib5"]
+
+[sub_resource type="Resource" id="Resource_hs2o1"]
+script = ExtResource("3_aqib5")
+metadata/_custom_type_script = "uid://b5wlqgxadyid6"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vlyn"]
+bg_color = Color(0.08, 0.08, 0.08, 0.5764706)
+
+[node name="Skillbutton" type="TextureButton"]
+z_index = 2
+custom_minimum_size = Vector2(48, 48)
+offset_right = 40.0
+offset_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource("1_6vlyn")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_aqib5")
+skill_id = "HP Up"
+skill_resource = SubResource("Resource_hs2o1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vlyn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 12
+text = "0/3"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = 1
+position = Vector2(4, -6)
+default_color = Color(0.31177333, 0.019675424, 0.013599187, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

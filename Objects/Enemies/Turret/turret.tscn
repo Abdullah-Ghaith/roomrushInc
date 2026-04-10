@@ -119,7 +119,7 @@ _data = {
 &"hit_flash": SubResource("Animation_3fo5d")
 }
 
-[node name="Turret" type="Node2D" groups=["enemy"]]
+[node name="Turret" type="Node2D" groups=["Enemy"]]
 rotation = -4.262376
 script = ExtResource("1_ldklw")
 bullet_scene = ExtResource("2_k63up")

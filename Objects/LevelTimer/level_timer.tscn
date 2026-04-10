@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsnvnj0eudcxi"]
+
+[ext_resource type="Script" uid="uid://da0fb4hj2dpte" path="res://Objects/LevelTimer/level_timer.gd" id="1_mn4qg"]
+
+[sub_resource type="Animation" id="Animation_mn4qg"]
+resource_name = "buh_blink"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.4045111, 0.40451115, 0.4045111, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_epc2l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b8et"]
+_data = {
+&"RESET": SubResource("Animation_epc2l"),
+&"buh_blink": SubResource("Animation_mn4qg")
+}
+
+[node name="LevelTimer" type="RichTextLabel"]
+offset_right = 297.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[font=Assets/Fonts/zig.ttf][center][outline_color=4768cf][outline_size=15][font_size=24]%02d:%02d[color=#aaaaaa].%02d[/color][/font_size]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_mn4qg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7b8et")
+}
