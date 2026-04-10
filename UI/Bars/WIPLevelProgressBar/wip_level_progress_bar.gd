@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 	if elapsed >= period:
 		elapsed = 0.0
 
+# Update period for best time if available
 func _on_level_completed(scene_path: String, completion_time: float) -> void:
 	if level_scene and scene_path == level_scene.resource_path:
 		var current_best = SaveManager.current_save.level_best_times.get(scene_path, INF)

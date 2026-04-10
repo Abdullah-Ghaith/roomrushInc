@@ -7,7 +7,7 @@ func _ready() -> void:
 	SignalBus.level_completed.connect(_on_level_completed)
 
 # =============================================================
-
+# Update best time if possible
 func _on_level_completed(scene_path: String, completion_time: float) -> void:
 	var current_best = current_save.level_best_times.get(scene_path, INF)
 	if completion_time < current_best:
