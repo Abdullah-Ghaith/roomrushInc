@@ -36,7 +36,7 @@ visible = false
 position = Vector2(0.75, -0.75)
 shape = SubResource("RectangleShape2D_uw4m0")
 
-[connection signal="body_entered" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
-[connection signal="body_exited" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_exited"]

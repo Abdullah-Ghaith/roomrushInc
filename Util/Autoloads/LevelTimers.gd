@@ -3,6 +3,14 @@ extends Node
 # each entry: { "scene_path": String, "period": float, "elapsed": float }
 var timers: Array[Dictionary] = []
 
+
+func get_progress(scene_path: String) -> float:
+	for timer in timers:
+		if timer["scene_path"] == scene_path:
+			return timer["elapsed"] / timer["period"]
+	return 0.0
+
+#=============================================
 func _ready() -> void:
 	SignalBus.level_completed.connect(_on_level_completed)
 	_build_timers()

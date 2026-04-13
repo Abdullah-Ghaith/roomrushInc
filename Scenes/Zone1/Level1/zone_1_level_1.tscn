@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://1nui1cxhury1"]
+[gd_scene load_steps=13 format=4 uid="uid://1nui1cxhury1"]
 
+[ext_resource type="Script" uid="uid://d1dxi8d0x2v4b" path="res://Util/Classes/Levels/levels.gd" id="1_smgpr"]
 [ext_resource type="PackedScene" uid="uid://cflslici83xri" path="res://Objects/TileMaps/bw_bg.tscn" id="1_yx6dk"]
+[ext_resource type="Resource" uid="uid://cefug6kd04fo0" path="res://Resources/Levels/Zone1/Z1L1.tres" id="2_5lfk2"]
 [ext_resource type="PackedScene" uid="uid://c5x0uwhsvkay6" path="res://Objects/Player/player.tscn" id="2_hiqor"]
 [ext_resource type="PackedScene" uid="uid://c37uprm441s3w" path="res://Objects/Furniture/ExitPortal/ExitPortal.tscn" id="3_hiqor"]
 [ext_resource type="PackedScene" uid="uid://iricf2su4h65" path="res://Objects/Enemies/Turret/turret.tscn" id="4_lkfdt"]
 [ext_resource type="PackedScene" uid="uid://b7277pb3xk3hp" path="res://Objects/Platform/basic_blue_oneway.tscn" id="5_nv23k"]
 [ext_resource type="PackedScene" uid="uid://bs220wy4ilxwo" path="res://Objects/Enemies/Aggressor/aggressor.tscn" id="6_dgtes"]
 [ext_resource type="PackedScene" uid="uid://daqfjeu1rx1jg" path="res://UI/ComboBar/combo_bar.tscn" id="7_0nhvh"]
-[ext_resource type="Script" uid="uid://bp5n8tnreuh4g" path="res://Util/Managers/LevelManagers/AnnihilationLevelManager.gd" id="8_0nhvh"]
+[ext_resource type="Script" uid="uid://bp5n8tnreuh4g" path="res://Util/Classes/Levels/LevelConditions/exterminiation_level_con.gd.gd" id="8_0nhvh"]
 [ext_resource type="PackedScene" uid="uid://dsnvnj0eudcxi" path="res://Objects/LevelTimer/level_timer.tscn" id="9_mfm6b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lkfdt"]
@@ -16,7 +18,12 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-143, 467, 0, 467, -1, 445, -141, 444), PackedVector2Array(61, 428, 61, 411, 204, 411, 204, 428)])
 agent_radius = 1.5
 
-[node name="Zone1Level1" type="Node2D"]
+[node name="Zone1Level1" type="Node2D" node_paths=PackedStringArray("level_timer", "level_condition")]
+script = ExtResource("1_smgpr")
+level_money = ExtResource("2_5lfk2")
+level_timer = NodePath("CanvasLayer/LevelTimer")
+level_condition = NodePath("ExterminationLevelCondition")
+metadata/_custom_type_script = "uid://d1dxi8d0x2v4b"
 
 [node name="Player" parent="." instance=ExtResource("2_hiqor")]
 position = Vector2(421, 549)
@@ -112,6 +119,6 @@ offset_top = 51.0
 offset_right = 299.0
 offset_bottom = 91.0
 
-[node name="AnnihilationLevelManager" type="Node" parent="."]
+[node name="ExterminationLevelCondition" type="Node" parent="."]
 script = ExtResource("8_0nhvh")
 metadata/_custom_type_script = "uid://bp5n8tnreuh4g"

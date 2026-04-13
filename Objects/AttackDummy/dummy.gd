@@ -7,5 +7,5 @@ extends Node2D
 
 func _ready() -> void:
 	health_component.died.connect(func():
-		Globals.money += value
+		CurrencyManager.money += value
 	)

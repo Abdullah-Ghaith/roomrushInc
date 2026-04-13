@@ -1,6 +1,9 @@
 Next up:
 
-3. Add door portal where player shrinks as they enter then scene manager loads next screen
+0. make level manager generic
+1. Make the dummy drop coins on death sonic rings style
+2. Add door portal where player shrinks as they enter then scene manager loads next screen
+3. then get to making some upgrades + weapons + weapons
 
 
 Planned

@@ -17,12 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Util/Autoloads/Globals.gd"
 SignalBus="*res://Util/Autoloads/SignalBus.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 SaveManager="*res://Util/Autoloads/SaveManager.gd"
 CombatBus="*res://Util/Autoloads/CombatBus.gd"
 LevelTimers="*res://Util/Autoloads/LevelTimers.gd"
+CurrencyManager="*res://Util/Autoloads/CurrencyManager.gd"
 
 [editor_plugins]
 

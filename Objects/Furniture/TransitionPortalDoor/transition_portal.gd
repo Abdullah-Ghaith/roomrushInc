@@ -24,8 +24,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and player_nearby:
 		## Attempt to purchase portal upgrade
-		if not enabled and Globals.money >= money_requirement.get_value():
-			Globals.money -= money_requirement.get_value()
+		if not enabled and CurrencyManager.money >= money_requirement.get_value():
+			CurrencyManager.money -= money_requirement.get_value()
 			money_requirement.fade_out()
 			enabled = true
 		elif enabled:

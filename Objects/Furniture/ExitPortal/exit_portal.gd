@@ -7,14 +7,16 @@ signal transition_portal_interact
 @onready var player_detection_area: Area2D = %PlayerDetectionArea
 @onready var e_to_interact: eToInteract = %"E-to-interact"
 
-var player_nearby : bool = false
 var enabled : bool = false :
 	set(value):
 		enabled = value
 		enable(value)
 
+
+var player_nearby : bool = false
+
 func _ready() -> void:
-	SignalBus.level_clear.connect(func():
+	SignalBus.level_completed.connect(func(_scene_path, _completion_time):
 		enabled = true
 		)
 

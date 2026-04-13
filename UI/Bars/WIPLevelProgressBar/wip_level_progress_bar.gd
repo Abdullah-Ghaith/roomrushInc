@@ -2,6 +2,7 @@ class_name LevelSelectBar extends Control
 
 @export var level_scene: PackedScene = null
 @export var unlocked: bool = false
+@export var money_reward: float = 2.0
 
 @onready var level_progress_bar: TextureProgressBar = %LevelProgressBar
 @onready var bg_panel: Panel = %BGPanel
@@ -41,10 +42,8 @@ func _load_period() -> void:
 func _process(delta: float) -> void:
 	if not unlocked or not has_best_time or not is_visible_in_tree():
 		return
-	elapsed += delta
-	level_progress_bar.value = clampf((elapsed / period) * 100.0, 0.0, 100.0)
-	if elapsed >= period:
-		elapsed = 0.0
+	level_progress_bar.value = LevelTimers.get_progress(level_scene.resource_path) * 100.0
+
 
 # Update period for best time if available
 func _on_level_completed(scene_path: String, completion_time: float) -> void:

@@ -10,7 +10,7 @@ var displayed_money: float:
 		text = str(round(displayed_money))
 
 func _ready() -> void:
-	displayed_money = Globals.money
+	displayed_money = CurrencyManager.money
 
 	SignalBus.money_collected.connect(_handle_money_collected)
 	SignalBus.money_spent.connect(_handle_money_spent)
@@ -32,6 +32,6 @@ func _tween_money_display() -> void:
 	money_tween.tween_property(
 		self,
 		"displayed_money",
-		Globals.money,
+		CurrencyManager.money,
 		0.4
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

@@ -1,4 +1,4 @@
-extends RichTextLabel
+class_name LevelTimer extends RichTextLabel
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -8,7 +8,7 @@ var running: bool = false
 
 func _ready() -> void:
 	running = true
-	SignalBus.level_clear.connect(_on_level_clear)
+	SignalBus.level_completed.connect(_on_level_completed)
 
 func _process(delta: float) -> void:
 	if not running:
@@ -23,9 +23,6 @@ func _update_stopwatch_label() -> void:
 	var bbcode = "[font=Assets/Fonts/zig.ttf][center][outline_color=4768cf][outline_size=15][font_size=24]%02d:%02d[color=#aaaaaa].%02d[/color][/font_size]" % [minutes, seconds, milliseconds]
 	parse_bbcode(bbcode)
 
-func _on_level_clear() -> void:
+func _on_level_completed(_scene_path, _completion_time) -> void:
 	running = false
 	animation_player.play("buh_blink", -1, 0.5)
-
-	var scene_path = get_tree().current_scene.scene_file_path
-	SignalBus.level_completed.emit(scene_path, elapsed_time)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelMoney" load_steps=2 format=3 uid="uid://cefug6kd04fo0"]
+
+[ext_resource type="Script" uid="uid://bhtommh5nhgm6" path="res://Util/Classes/Levels/level_money_values.gd" id="1_nsxh1"]
+
+[resource]
+script = ExtResource("1_nsxh1")
+completion_value = 5.0
+tick_value = 2.0
+metadata/_custom_type_script = "uid://bhtommh5nhgm6"

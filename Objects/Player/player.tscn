@@ -28,6 +28,7 @@ position = Vector2(9.536743e-07, 9.313226e-10)
 rotation = 0.0009770232
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -111)
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
@@ -44,11 +45,11 @@ shape = SubResource("ConvexPolygonShape2D_t45n6")
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("5_t45n6")
-MAX_HEALTH = 3.0
 metadata/_custom_type_script = "uid://bwqr0iti8dnil"
 
 [node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
 script = ExtResource("6_u7612")
 hitbox_component = NodePath("../HitboxComponent")
 character_body = NodePath("..")
+knockback_multiplier = 0.4
 metadata/_custom_type_script = "uid://bbykee8631tfx"
