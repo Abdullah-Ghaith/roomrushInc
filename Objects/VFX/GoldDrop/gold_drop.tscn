@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://1vbmsur2nhoc"]
+
+[ext_resource type="Texture2D" uid="uid://cij2yc1h3jpcl" path="res://Assets/Loot/coin.png" id="1_fgyis"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_np0gc"]
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_tki65"]
+offsets = PackedFloat32Array(0.6666667, 0.96694213)
+colors = PackedColorArray(1, 0.90999997, 0.90999997, 1, 0, 0, 0, 0.3647059)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tkm4x"]
+gradient = SubResource("Gradient_tki65")
+
+[sub_resource type="Curve" id="Curve_is8fv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8817567, 0.93741405), 0.0, 0.0, 0, 0, Vector2(0.9864865, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bvup4"]
+curve = SubResource("Curve_is8fv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6ejo"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 2.775, 0)
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_max = 55.18
+gravity = Vector3(0, 100, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_bvup4")
+color_ramp = SubResource("GradientTexture1D_tkm4x")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+collision_mode = 1
+collision_friction = 0.15
+collision_bounce = 0.63
+collision_use_scale = true
+
+[node name="goldParticles" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_np0gc")
+emitting = false
+amount = 20
+texture = ExtResource("1_fgyis")
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.07
+explosiveness = 1.0
+collision_base_size = 0.15
+process_material = SubResource("ParticleProcessMaterial_v6ejo")
