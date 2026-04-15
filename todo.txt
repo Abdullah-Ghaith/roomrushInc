@@ -1,10 +1,15 @@
 Next up:
 
-2. Add GPM next to label
-3. then get to making some upgrades + weapons 
+! BUG: aggressor particle mask is using gate
 
+0. Design Z1L2 (Gate from claude)
+	- Design shooters (dont jump between platforms)
+	- Design "reach end" level manager (emit on player entering the exit portal area)
+	- Create a "event trigger-er" base class that emits a "triggered" signal. From there, make one for enemies dying, where you can @export enemy nodes specifically 
+1. get to making some upgrades + weapons + enemies
+	-
 
 
 Planned
 - Killing the last enemy causes this kind of shockwave to ripple across the screen https://www.youtube.com/watch?v=SCHdglr35pk
-- Give player dash https://www.youtube.com/watch?v=fp_XugQvOKU
+- Show GPM next to label

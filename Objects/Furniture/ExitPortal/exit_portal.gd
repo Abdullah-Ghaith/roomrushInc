@@ -2,6 +2,7 @@ class_name ExitPortal extends Node2D
 
 
 signal transition_portal_interact
+signal player_detected
 
 @onready var portal_particles: GPUParticles2D = %PortalParticles
 @onready var player_detection_area: Area2D = %PlayerDetectionArea
@@ -32,9 +33,11 @@ func enable(enable: bool) -> void:
 
 
 func _on_player_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and enabled:
-		e_to_interact.reveal()
-		player_nearby = true
+	if body.is_in_group("Player"):
+		player_detected.emit()
+		if enabled:
+			e_to_interact.reveal()
+			player_nearby = true
 
 func _on_player_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):

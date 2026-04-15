@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwolm4g28eh3i"]
+
+[ext_resource type="Material" uid="uid://b26uyrpobp5vj" path="res://Objects/Enemies/Aggressor/dusting_vfx_maybe.tres" id="1_7uaru"]
+
+[node name="GateDusting" type="GPUParticles2D"]
+emitting = false
+amount = 2046
+lifetime = 4.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+randomness = 0.64
+process_material = ExtResource("1_7uaru")

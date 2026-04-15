@@ -3,7 +3,6 @@ class_name Level extends Node2D
 @export var level_money : LevelMoney = null
 @export var level_timer : LevelTimer = null
 
-#TODO make the level manager generic
 @export var level_condition: LevelCondition
 
 
