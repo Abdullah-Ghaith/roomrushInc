@@ -1,4 +1,4 @@
-class_name range_weapon extends Node2D
+class_name BasicGun extends Node2D
 
 
 @export var bullet_scene : PackedScene = null

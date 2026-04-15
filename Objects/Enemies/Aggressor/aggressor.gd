@@ -124,5 +124,5 @@ func _on_timer_timeout() -> void:
 		return
 	if nav_agent.target_position != player.global_position:
 		nav_agent.target_position = player.global_position
-	nav_agent.get_next_path_position()
+	var mext = nav_agent.get_next_path_position()
 	nav_update_timer.start()

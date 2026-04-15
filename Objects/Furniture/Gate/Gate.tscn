@@ -1,11 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dck662v4kmv71"]
+[gd_scene load_steps=13 format=3 uid="uid://dck662v4kmv71"]
 
 [ext_resource type="Texture2D" uid="uid://0c86co3aevpo" path="res://Assets/Furniture Objects/Gate.png" id="1_4imvp"]
 [ext_resource type="Script" uid="uid://cm6yejlyj02pp" path="res://Objects/Furniture/Gate/gate.gd" id="1_mof7d"]
 [ext_resource type="PackedScene" uid="uid://dwolm4g28eh3i" path="res://Objects/Furniture/Gate/GateDusting.tscn" id="3_1ms5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mof7d"]
-size = Vector2(28, 92)
+size = Vector2(27.666668, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ms5j"]
+size = Vector2(20, 6.0000095)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wc7ps"]
+size = Vector2(15.999999, 4.000002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwl2e"]
+size = Vector2(24, 7.833332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7in"]
+size = Vector2(12, 2.166665)
 
 [sub_resource type="Animation" id="Animation_qhy36"]
 resource_name = "Dust"
@@ -130,6 +142,9 @@ _data = {
 &"RESET": SubResource("Animation_4s8ch")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfspx"]
+size = Vector2(8, 1.9999962)
+
 [node name="Gate" type="AnimatableBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 2
@@ -140,8 +155,24 @@ script = ExtResource("1_mof7d")
 texture = ExtResource("1_4imvp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(-0.16666651, -4)
 shape = SubResource("RectangleShape2D_mof7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(3.1789145e-07, 41.000008)
+shape = SubResource("RectangleShape2D_1ms5j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(3.1789145e-07, 46)
+shape = SubResource("RectangleShape2D_wc7ps")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(0, 36.083336)
+shape = SubResource("RectangleShape2D_iwl2e")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(0, 48.916668)
+shape = SubResource("RectangleShape2D_xj7in")
 
 [node name="DustingAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -150,3 +181,7 @@ libraries = {
 }
 
 [node name="SquareDusting" parent="." instance=ExtResource("3_1ms5j")]
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5894572e-07, 51)
+shape = SubResource("RectangleShape2D_gfspx")

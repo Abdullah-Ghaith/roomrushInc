@@ -1,11 +1,7 @@
 Next up:
 
-! BUG: aggressor particle mask is using gate
 
 0. Design Z1L2 (Gate from claude)
-	- Design shooters (dont jump between platforms)
-	- Design "reach end" level manager (emit on player entering the exit portal area)
-	- Create a "event trigger-er" base class that emits a "triggered" signal. From there, make one for enemies dying, where you can @export enemy nodes specifically 
 1. get to making some upgrades + weapons + enemies
 	-
 
@@ -13,3 +9,4 @@ Next up:
 Planned
 - Killing the last enemy causes this kind of shockwave to ripple across the screen https://www.youtube.com/watch?v=SCHdglr35pk
 - Show GPM next to label
+- Add a screen that spills gold and shows how much gold youve earned since youve returned to the main area
