@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bd0pxlrpf86ie"]
+[gd_scene load_steps=20 format=4 uid="uid://bd0pxlrpf86ie"]
 
 [ext_resource type="Script" uid="uid://d1dxi8d0x2v4b" path="res://Util/Classes/Levels/levels.gd" id="1_r7y8s"]
 [ext_resource type="Resource" uid="uid://cefug6kd04fo0" path="res://Resources/Levels/Zone1/Z1L1.tres" id="2_6p14h"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://3sj84hjqiy8g" path="res://Util/Classes/Triggers/enemy_clear_trigger.gd" id="13_5ehy7"]
 [ext_resource type="Script" uid="uid://vo8xpuwm2hs5" path="res://Util/Classes/Levels/LevelConditions/reach_end_level_condition.gd" id="14_322pl"]
 [ext_resource type="PackedScene" uid="uid://ch08n5kiesa8r" path="res://Objects/Enemies/Shooter/shooter.tscn" id="14_miy56"]
+[ext_resource type="PackedScene" uid="uid://tw8uyjgqu2jv" path="res://Objects/VFX/DirtParticles/dirt_particles.tscn" id="15_miy56"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lkfdt"]
 vertices = PackedVector2Array(-2.4296875, 446.47656, -1.5703125, 465.5, -141.36719, 465.5, -139.61719, 445.5, 202.5, 426.5, 62.5, 426.5, 62.5, 412.5, 202.5, 412.5)
@@ -36,6 +37,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1184, 315), Vector2(1184, 548)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirtParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_miy56"]
 length = 0.001
@@ -50,6 +63,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1184, 315)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirtParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wufgv"]
@@ -108,6 +133,10 @@ scale = Vector2(0.33333334, 0.33333334)
 script = ExtResource("13_5ehy7")
 enemies = [NodePath("../../Enemies/Aggressor"), NodePath("../../Enemies/Shooter")]
 metadata/_custom_type_script = "uid://3sj84hjqiy8g"
+
+[node name="DirtParticles" parent="Gate" instance=ExtResource("15_miy56")]
+position = Vector2(0, 40.66667)
+scale = Vector2(0.33333334, 0.33333334)
 
 [node name="Platforms" type="Node2D" parent="."]
 position = Vector2(-64, 443)

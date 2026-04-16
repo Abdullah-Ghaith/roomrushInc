@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://tw8uyjgqu2jv"]
+
+[ext_resource type="Texture2D" uid="uid://d4f21k1qa6hx8" path="res://Assets/VFX/Explosion_Sheet.png" id="1_nmc4k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dm6g8"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_nmc4k"]
+_data = [Vector2(0.0067567527, 0.9821183), 0.0, 0.0, 0, 0, Vector2(0.40540537, 0.758597), 0.0, 0.0, 0, 0, Vector2(0.99662155, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dm6g8"]
+curve = SubResource("Curve_nmc4k")
+
+[sub_resource type="Gradient" id="Gradient_o4rkm"]
+offsets = PackedFloat32Array(0.011111111, 0.4, 0.6666667, 0.9777778)
+colors = PackedColorArray(0.64, 0.64, 0.64, 1, 0.17, 0.17, 0.17, 1, 0.96, 0.96, 0.96, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hdxmn"]
+gradient = SubResource("Gradient_o4rkm")
+
+[sub_resource type="Curve" id="Curve_wkkob"]
+_data = [Vector2(0, 0.020314455), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pyk1a"]
+curve = SubResource("Curve_wkkob")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4rkm"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 60.68
+direction = Vector3(1, 1, 0)
+spread = 180.0
+flatness = 0.735
+initial_velocity_min = 137.93
+initial_velocity_max = 151.73
+gravity = Vector3(0, 98, 0)
+color = Color(0.1375, 0, 0.55, 1)
+color_ramp = SubResource("GradientTexture1D_hdxmn")
+alpha_curve = SubResource("CurveTexture_dm6g8")
+anim_speed_min = 3.0
+anim_speed_max = 3.0
+turbulence_enabled = true
+turbulence_noise_strength = 2.89
+turbulence_influence_over_life = SubResource("CurveTexture_pyk1a")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+collision_use_scale = true
+
+[node name="DirtParticles" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_dm6g8")
+emitting = false
+amount = 128
+texture = ExtResource("1_nmc4k")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.32
+process_material = SubResource("ParticleProcessMaterial_o4rkm")
