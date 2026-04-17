@@ -1,7 +1,9 @@
 extends AnimatableBody2D
 
 @export var disentigration_generator : Node = null
+
 @onready var dusting_animation_player: AnimationPlayer = %DustingAnimationPlayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

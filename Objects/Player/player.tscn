@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5x0uwhsvkay6"]
+[gd_scene load_steps=9 format=3 uid="uid://c5x0uwhsvkay6"]
 
 [ext_resource type="Script" uid="uid://xu1a36306xhx" path="res://Objects/Player/player.gd" id="1_yw17q"]
 [ext_resource type="Texture2D" uid="uid://p76ijsx8n27j" path="res://Assets/Player/main-player-syd-version.png" id="2_l2ya6"]
 [ext_resource type="PackedScene" uid="uid://52etfvfak5qv" path="res://Objects/Weapons/BasicGun/basic_gun.tscn" id="3_l2ya6"]
+[ext_resource type="Script" uid="uid://crcmua858ot2k" path="res://Util/Classes/ShakingCamera/shaking_camera.gd" id="4_bpp7x"]
 [ext_resource type="Script" uid="uid://2pfpvjm7krcb" path="res://Util/Composition/hitbox_component.gd" id="4_o1rty"]
 [ext_resource type="Script" uid="uid://bwqr0iti8dnil" path="res://Util/Composition/health_component.gd" id="5_t45n6"]
 [ext_resource type="Script" uid="uid://bbykee8631tfx" path="res://Util/Composition/knockback_component.gd" id="6_u7612"]
@@ -27,10 +28,12 @@ polygon = PackedVector2Array(-4.6598015, 11.114756, 14.911362, -25.649439, 34.48
 position = Vector2(9.536743e-07, 9.313226e-10)
 rotation = 0.0009770232
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="ShakingCamera" type="Camera2D" parent="."]
 position = Vector2(0, -111)
 position_smoothing_enabled = true
-position_smoothing_speed = 1.0
+position_smoothing_speed = 2.0
+script = ExtResource("4_bpp7x")
+metadata/_custom_type_script = "uid://crcmua858ot2k"
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 4
