@@ -23,6 +23,8 @@ SaveManager="*res://Util/Autoloads/SaveManager.gd"
 CombatBus="*res://Util/Autoloads/CombatBus.gd"
 LevelTimers="*res://Util/Autoloads/LevelTimers.gd"
 CurrencyManager="*res://Util/Autoloads/CurrencyManager.gd"
+PlayerStats="*res://Util/Autoloads/PlayerStats.gd"
+WeaponRegistry="*res://Util/Autoloads/WeaponRegistry.gd"
 
 [editor_plugins]
 

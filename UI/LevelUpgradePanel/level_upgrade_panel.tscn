@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://bw3x31hrnay"]
+[gd_scene load_steps=2 format=3 uid="uid://bw3x31hrnay"]
+
+[ext_resource type="Script" uid="uid://b8aqd5vghnfpy" path="res://UI/LevelUpgradePanel/level_upgrade_panel.gd" id="1_ahj7b"]
 
 [node name="LevelUpgradePanel" type="Node"]
+script = ExtResource("1_ahj7b")
