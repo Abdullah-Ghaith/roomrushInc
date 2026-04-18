@@ -199,7 +199,7 @@ unique_name_in_owner = true
 path_desired_distance = 3.0
 target_desired_distance = 3.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="NavUpdateTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.3
 autostart = true
@@ -246,7 +246,7 @@ metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 [node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
 script = ExtResource("11_8a0py")
 hitbox_component = NodePath("../HitboxComponent")
-character_body = NodePath("..")
+character_body = NodePath("")
 metadata/_custom_type_script = "uid://bbykee8631tfx"
 
 [node name="meleeAttackBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
@@ -273,5 +273,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_cj306")
 }
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="NavUpdateTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="meleeAttackBox" to="meleeAttackBox" method="_on_area_entered"]
