@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bml1mry3eaiyc"]
 
 [ext_resource type="Texture2D" path="res://Assets/Sprites/UI/EnemyUpgrade/SkillIcons/96x96/skill_icons16.png" id="1_6vlyn"]
-[ext_resource type="Script" uid="uid://cmpgcplnel2st" path="res://UI/Upgrades/SkillNode/skill_node.gd" id="2_aqib5"]
+[ext_resource type="Script" uid="uid://cmpgcplnel2st" path="res://UI/SkillTree/SkillNode.gd" id="2_aqib5"]
 [ext_resource type="Script" uid="uid://b5wlqgxadyid6" path="res://Util/Classes/Upgrades/upgrade_effect.gd" id="3_aqib5"]
 
 [sub_resource type="Resource" id="Resource_hs2o1"]
