@@ -1,10 +1,8 @@
 Next up:
 
 
-0. Design Z1L2 (Gate from claude)
 1. get to making some upgrades + weapons + enemies
-	-
-
+2. Figure out a way to save the portal being paid for and skills
 
 Planned
 - Killing the last enemy causes this kind of shockwave to ripple across the screen https://www.youtube.com/watch?v=SCHdglr35pk

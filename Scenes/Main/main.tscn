@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cu3e8qjbdtfh"]
+[gd_scene load_steps=11 format=4 uid="uid://cu3e8qjbdtfh"]
 
 [ext_resource type="Script" uid="uid://8e8t0k6iy4a0" path="res://Scenes/Main/main.gd" id="1_hryqi"]
 [ext_resource type="PackedScene" uid="uid://cflslici83xri" path="res://Objects/TileMaps/bw_bg.tscn" id="2_imbg2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://n27njilct0md" path="res://Objects/Furniture/TransitionPortalDoor/transition_portal.tscn" id="7_wliom"]
 [ext_resource type="PackedScene" uid="uid://iricf2su4h65" path="res://Objects/Enemies/Turret/turret.tscn" id="8_2ok46"]
 [ext_resource type="PackedScene" uid="uid://37ib7y0pxa1l" path="res://UI/LevelSelectUI/zone1_level_select_ui.tscn" id="8_hryqi"]
+[ext_resource type="PackedScene" uid="uid://b0uqrwi87gqgf" path="res://Objects/Furniture/SmithingBuilding/smithing_building.tscn" id="10_imbg2"]
 
 [node name="Main" type="Node2D"]
 z_index = -290
@@ -57,5 +58,8 @@ offset_left = 1071.0
 offset_top = 602.0
 offset_right = -81.0
 offset_bottom = -46.0
+
+[node name="SmithingBuilding" parent="." instance=ExtResource("10_imbg2")]
+position = Vector2(-423, 37)
 
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
