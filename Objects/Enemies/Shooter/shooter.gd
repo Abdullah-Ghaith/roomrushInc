@@ -8,11 +8,13 @@ class_name ShooterEnemy extends CharacterBody2D
 @onready var shoot_timer: Timer = %ShootTimer
 @onready var detection_range: Area2D = %DetectionRange
 @onready var enemy_gun: EnemyGun = %EnemyGun
+@onready var sprite: Sprite2D = $Sprite
 
 # -- Tuning --
 @export var movement_speed: float = 180.0
 @export var knockback_friction: float = 800.0
 @export var shoot_cd_s: float = 0.5
+
 
 # -- State --
 var player: CharacterBody2D = null
@@ -24,6 +26,7 @@ func _clean_up() -> void:
 		detection_range.queue_free()
 		shoot_timer.stop()
 		enemy_gun.queue_free()
+		sprite.set_material(null)
 
 func _ready() -> void:
 	health_component.died.connect(func(): 
@@ -69,6 +72,9 @@ func _handle_grounded() -> void:
 
 func apply_knockback(force: Vector2) -> void:
 	knockback_velocity = force
+
+func set_highlight(enable : bool) -> void:
+	sprite.material.set_shader_parameter("enabled", enable)
 
 # ============================================================
 

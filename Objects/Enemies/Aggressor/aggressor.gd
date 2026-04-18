@@ -8,6 +8,7 @@ class_name PlatformerEnemy extends CharacterBody2D
 @onready var ray_cast_right: RayCast2D = %RayCastRight
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var dusting_animation_player: AnimationPlayer = %DustingAnimationPlayer
+@onready var sprite: Sprite2D = $Sprite
 
 # -- Tuning --
 @export var movement_speed: float = 180.0
@@ -115,6 +116,8 @@ func _small_jump() -> void:
 func apply_knockback(force: Vector2) -> void:
 	knockback_velocity = force
 
+func set_highlight(enable : bool) -> void:
+	sprite.material.set_shader_parameter("enabled", enable)
 # ============================================================
 
 func _on_timer_timeout() -> void:

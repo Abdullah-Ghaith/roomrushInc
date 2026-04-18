@@ -11,7 +11,6 @@ func _ready() -> void:
 func trigger_shake(x_shake : float, y_shake : float) -> void:
 	_x_shake_strength = x_shake
 	_y_shake_strength = y_shake
-	print("triggered shake")
 
 func _process(delta: float) -> void:
 	if _x_shake_strength > 0:
