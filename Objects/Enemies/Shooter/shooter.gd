@@ -19,6 +19,7 @@ class_name ShooterEnemy extends CharacterBody2D
 # -- State --
 var player: CharacterBody2D = null
 var knockback_velocity: Vector2 = Vector2.ZERO
+var enemy_active: bool = false
 
 # ============================================================
 func _clean_up() -> void:
@@ -38,9 +39,14 @@ func _ready() -> void:
 		)
 	
 	shoot_timer.set_wait_time(shoot_cd_s)
+	sprite.material = sprite.material.duplicate()
 
 func _physics_process(delta: float) -> void:
 	if not player:
+		return
+	
+	enemy_active = _has_line_of_sight()
+	if not enemy_active:
 		return
 
 	if knockback_velocity != Vector2.ZERO:
@@ -91,15 +97,33 @@ func _on_timer_timeout() -> void:
 func _on_detection_range_body_entered(body: Node2D) -> void:
 	if body == player:
 		enemy_gun.set_target(player)
-		shoot_timer.start()
+		shoot_timer.start(shoot_cd_s)
 
 
 func _on_detection_range_body_exited(body: Node2D) -> void:
 	if body == player:
 		enemy_gun.set_target(null)
-		shoot_timer.stop
-
+		shoot_timer.stop()
 
 func _on_shoot_timer_timeout() -> void:
 	enemy_gun.shoot()
 	shoot_timer.start(shoot_cd_s)
+
+
+func _has_line_of_sight() -> bool:
+	if player == null:
+		return false
+
+	var space := get_world_2d().direct_space_state
+	var query := PhysicsRayQueryParameters2D.create(
+		global_position,
+		player.global_position
+	)
+	# Exclude the object itself so it doesn't block its own raycast
+	query.exclude = [self]
+	query.collision_mask = 2  # this is binary layer 2 — hits buildings
+	
+	var result := space.intersect_ray(query)
+
+	# LOS is clear only if we hit the player — any other hit means a wall is in the way
+	return result.is_empty() or result.collider == player

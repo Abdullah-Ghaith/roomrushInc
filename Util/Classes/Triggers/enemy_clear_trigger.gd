@@ -19,3 +19,5 @@ func highlight_enemies() -> void:
 	for enemy in enemies:
 		if enemy.has_method("set_highlight"):
 			enemy.set_highlight(true)
+		else:
+			printerr("ENEMY HAS NO SET_HIGHLIHGHT:" + str(enemy))

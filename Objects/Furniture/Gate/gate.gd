@@ -8,8 +8,10 @@ extends AnimatableBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_enable_collision()
 	if disentigration_generator:
 		disentigration_generator.trigger.connect(_handle_disentigration)
+
 
 func _handle_disentigration() -> void:
 	dusting_animation_player.play("Dust")
@@ -17,6 +19,13 @@ func _handle_disentigration() -> void:
 func set_highlight(enable : bool) -> void:
 	sprite.material.set_shader_parameter("enabled", enable)
 
-
-func remove_shader() -> void:
+func clean_up() -> void:
 	sprite.set_material(null)
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = true
+
+func _enable_collision() -> void:
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.disabled = false

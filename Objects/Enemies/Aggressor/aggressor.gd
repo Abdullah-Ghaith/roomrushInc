@@ -24,10 +24,17 @@ const JUMP_HEIGHT_THRESHOLD: float = 10.0  # min Y diff to trigger a jump
 var player: CharacterBody2D = null
 var was_on_floor: bool = true
 var knockback_velocity: Vector2 = Vector2.ZERO
-
+var enemy_active: bool = false
 
 
 # ============================================================
+
+func _clean_up() -> void:
+		self.remove_from_group("Enemy")
+		sprite.set_material(null)
+		for child in get_children():
+			if child is CollisionShape2D:
+				child.disabled = true
 
 func _ready() -> void:
 	health_component.died.connect(func(): 
@@ -37,10 +44,16 @@ func _ready() -> void:
 		await dusting_animation_player.animation_finished
 		self.queue_free()
 		)
+	sprite.material = sprite.material.duplicate()
 
 
 func _physics_process(delta: float) -> void:
 	if not player:
+		return
+
+	enemy_active = _has_line_of_sight()
+	print(enemy_active)
+	if not enemy_active:
 		return
 
 	# drain knockback over time
@@ -117,7 +130,8 @@ func apply_knockback(force: Vector2) -> void:
 	knockback_velocity = force
 
 func set_highlight(enable : bool) -> void:
-	sprite.material.set_shader_parameter("enabled", enable)
+	if sprite.material:
+		sprite.material.set_shader_parameter("enabled", enable)
 # ============================================================
 
 func _on_timer_timeout() -> void:
@@ -129,3 +143,21 @@ func _on_timer_timeout() -> void:
 		nav_agent.target_position = player.global_position
 	var mext = nav_agent.get_next_path_position()
 	nav_update_timer.start()
+
+func _has_line_of_sight() -> bool:
+	if player == null:
+		return false
+
+	var space := get_world_2d().direct_space_state
+	var query := PhysicsRayQueryParameters2D.create(
+		global_position,
+		player.global_position
+	)
+	# Exclude the object itself so it doesn't block its own raycast
+	query.exclude = [self]
+	query.collision_mask = 2  # this is binary layer 2 — hits buildings
+	
+	var result := space.intersect_ray(query)
+
+	# LOS is clear only if we hit the player — any other hit means a wall is in the way
+	return result.is_empty() or result.collider == player

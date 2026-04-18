@@ -151,7 +151,13 @@ scale = Vector2(1.0625921, 1.0625921)
 range = 10.785
 
 [node name="Aggressor" parent="Enemies" instance=ExtResource("8_rv2cd")]
-position = Vector2(955, 664)
+position = Vector2(812, 658)
+
+[node name="Aggressor2" parent="Enemies" instance=ExtResource("8_rv2cd")]
+position = Vector2(1589, 661)
+
+[node name="Shooter2" parent="Enemies" instance=ExtResource("14_miy56")]
+position = Vector2(1669, 663)
 
 [node name="ExitPortal" parent="." instance=ExtResource("5_miy56")]
 position = Vector2(2444, 508)
@@ -159,6 +165,10 @@ scale = Vector2(1.4684099, 1.4684099)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lkfdt")
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+start_position = Vector2(1179, 701)
+end_position = Vector2(1146, 660)
 
 [node name="Gate" parent="." node_paths=PackedStringArray("disentigration_generator") instance=ExtResource("5_6p14h")]
 position = Vector2(1184, 315)

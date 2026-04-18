@@ -124,6 +124,7 @@ rotation = -4.262376
 script = ExtResource("1_ldklw")
 bullet_scene = ExtResource("2_k63up")
 range = 20.0
+metadata/_custom_type_script = "uid://bswffbb2j0to5"
 
 [node name="TurretSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qyj1e")
