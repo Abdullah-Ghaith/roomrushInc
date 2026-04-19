@@ -16,6 +16,8 @@ var lvl: int = 0:
 
 
 func _ready() -> void:
+	get_viewport().size_changed.connect(_redraw_line)
+
 	# Register this node's effect with UpgradeManager so load/replay works
 	if skill_resource and skill_id != "":
 		UpgradeManager.register_effect(skill_id, skill_resource)

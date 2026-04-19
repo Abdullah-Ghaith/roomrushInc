@@ -111,9 +111,6 @@ size_flags_vertical = 0
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="EntityTab" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList" instance=ExtResource("2_nj43k")]
-layout_mode = 2
-
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -138,6 +135,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
+vertical_scroll_mode = 2
 
 [node name="TreeContainer" type="Control" parent="HBoxContainer/Panel/VBoxContainer/TreeScrollContainer"]
 unique_name_in_owner = true
