@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d06aiafkto85v"]
+
+[ext_resource type="PackedScene" uid="uid://bml1mry3eaiyc" path="res://UI/Upgrades/SkillNode/skill_node.tscn" id="1_2p1rn"]
+[ext_resource type="Texture2D" uid="uid://d0ojoq5vuhlhb" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons33.png" id="1_11ln5"]
+
+[node name="BulletButton" instance=ExtResource("1_2p1rn")]
+texture_normal = ExtResource("1_11ln5")
+skill_id = "bullet"
+costs = Array[float]([2.0])

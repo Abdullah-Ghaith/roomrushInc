@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8q7uhj1ul0yl"]
+
+[ext_resource type="PackedScene" uid="uid://bml1mry3eaiyc" path="res://UI/Upgrades/SkillNode/skill_node.tscn" id="1_pokyf"]
+[ext_resource type="Texture2D" uid="uid://bul64dnv1wf3c" path="res://Assets/UI/Icons/SkillIcons/48x48/skill_icons54.png" id="2_gb8n3"]
+[ext_resource type="PackedScene" uid="uid://d06aiafkto85v" path="res://Objects/SkillNodeInstantiations/bullet_skill_node.tscn" id="3_xqnae"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skillbutton" parent="." instance=ExtResource("1_pokyf")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_gb8n3")
+costs = Array[float]([2.0])
+
+[node name="BulletButton" parent="Skillbutton" instance=ExtResource("3_xqnae")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -68.0
+offset_right = 49.0
+offset_bottom = -20.0

@@ -1,6 +1,8 @@
 Next up:
 
 
+0. add laser to show enemies connected to gate (draw a line and apply the laser shader to its sprite)
+	-> consider doing this for the lines in the skill tree too
 1. get to making some upgrades + weapons + enemies
 2. Figure out a way to save the portal being paid for and skills
 

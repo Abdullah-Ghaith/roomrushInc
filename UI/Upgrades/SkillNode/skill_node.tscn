@@ -23,7 +23,6 @@ stretch_mode = 0
 script = ExtResource("2_aqib5")
 skill_id = "HP Up"
 skill_resource = SubResource("Resource_hs2o1")
-max_lvl = null
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

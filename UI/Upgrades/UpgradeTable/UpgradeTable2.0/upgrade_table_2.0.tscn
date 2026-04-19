@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnce4rg35eiq8"]
 
-[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/TabDivider/TabDivider.png" id="1_1ufiw"]
-[ext_resource type="Script" uid="uid://drstj17httd50" path="res://UI/UpgradeTable/upgrade_table.gd" id="1_rhrov"]
+[ext_resource type="Texture2D" uid="uid://8hanx748byna" path="res://Assets/UI/Bars/TabDivider.png" id="1_1ufiw"]
+[ext_resource type="Script" uid="uid://drstj17httd50" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.0/upgrade_table_2.0.gd" id="1_rhrov"]
 [ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="2_cb6n3"]
-[ext_resource type="Texture2D" path="res://Assets/TileSets/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thin outline/tile_0020.png" id="3_h61lt"]
-[ext_resource type="Script" path="res://UI/UpgradeTable/enemy_icon_panel.gd" id="4_rhrov"]
+[ext_resource type="Texture2D" uid="uid://ttyc5dg3klhk" path="res://Assets/UI/Panels/tile_0020.png" id="3_h61lt"]
+[ext_resource type="Script" uid="uid://buvvhxhr6xbty" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.0/enemy_icon_panel.gd" id="4_rhrov"]
 [ext_resource type="Texture2D" uid="uid://cm6efxfm52ci5" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons7.png" id="6_o6hdd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhrov"]
@@ -202,29 +202,6 @@ theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList/EnemyIcon4/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("6_o6hdd")
-expand_mode = 3
-
-[node name="EnemyIcon5" type="Panel" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList"]
-self_modulate = Color(1, 0.55, 0.55, 1)
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_rhrov")
-script = ExtResource("4_rhrov")
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList/EnemyIcon5"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset = Vector2(20, 20)
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList/EnemyIcon5/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("6_o6hdd")
 expand_mode = 3

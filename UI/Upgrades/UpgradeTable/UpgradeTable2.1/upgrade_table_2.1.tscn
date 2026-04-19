@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3 uid="uid://fol2u422n8wu"]
+
+[ext_resource type="Script" uid="uid://bdy63p6pp7i6u" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.1/upgrade_table_2.1.gd" id="1_w0rt4"]
+[ext_resource type="Texture2D" uid="uid://8hanx748byna" path="res://Assets/UI/Bars/TabDivider.png" id="2_8y6qw"]
+[ext_resource type="PackedScene" uid="uid://xmuupsjjqom5" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.1/entity_tab.tscn" id="2_nj43k"]
+[ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="3_0o13v"]
+[ext_resource type="PackedScene" uid="uid://fvw3nqhw0ndg" path="res://UI/Upgrades/SkillTreeScenes/dumm_skill_tree.tscn" id="3_1xgw7"]
+[ext_resource type="PackedScene" uid="uid://c8q7uhj1ul0yl" path="res://UI/Upgrades/SkillTreeScenes/2dumm_skill_tree.tscn" id="4_nvi6n"]
+[ext_resource type="PackedScene" uid="uid://bnayrkrk0pe87" path="res://UI/Upgrades/UpgradeTable/category_bar.tscn" id="7_8y6qw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61lt"]
+bg_color = Color(0.6, 0.6, 0.6, 0.21568628)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_w0rt4")
+entity_tab_scene = ExtResource("2_nj43k")
+player_offence_tree = ExtResource("3_1xgw7")
+player_defence_tree = ExtResource("4_nvi6n")
+player_mobility_tree = ExtResource("3_1xgw7")
+player_economy_tree = ExtResource("4_nvi6n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Labels" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -26
+
+[node name="EnemyTab" type="TextureButton" parent="HBoxContainer/Labels"]
+self_modulate = Color(0, 0, 0, 0.4)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_8y6qw")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/Labels/EnemyTab"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = 30.0
+offset_right = 55.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(1.0127128, 1)
+theme_override_fonts/font = ExtResource("3_0o13v")
+text = "Enemies"
+
+[node name="TowerTab" type="TextureButton" parent="HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_8y6qw")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/Labels/TowerTab"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = 30.0
+offset_right = 47.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(1.0127128, 1)
+theme_override_fonts/font = ExtResource("3_0o13v")
+text = "Towers"
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+
+[node name="VScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel2"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(150, 40)
+layout_direction = 2
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 40.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="EnemyList" type="VBoxContainer" parent="HBoxContainer/Panel2/VScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="EntityTab" parent="HBoxContainer/Panel2/VScrollContainer/EnemyList" instance=ExtResource("2_nj43k")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_h61lt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CategoryBar" parent="HBoxContainer/Panel/VBoxContainer" instance=ExtResource("7_8y6qw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="TreeScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+
+[node name="TreeContainer" type="Control" parent="HBoxContainer/Panel/VBoxContainer/TreeScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2

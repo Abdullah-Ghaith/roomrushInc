@@ -60,6 +60,7 @@ func _on_pressed() -> void:
 
 	# Guard: can't afford
 	if CurrencyManager.money < cost:
+		print("broke bi")
 		button_pressed = false
 		_flash_insufficient_funds()
 		return
@@ -91,3 +92,20 @@ func _flash_insufficient_funds() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1.5, 0.3, 0.3), 0.05)
 	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.15)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_VISIBILITY_CHANGED and is_visible_in_tree():
+		_redraw_line()
+
+func _redraw_line() -> void:
+	var parent_node = get_parent()
+	if not parent_node is SkillNode:
+		return
+	# Wait for layout to settle before measuring positions
+	await get_tree().process_frame
+	await get_tree().process_frame
+	line_2d.clear_points()
+	var start_pos = line_2d.to_local(global_position + size / 2)
+	var end_pos = line_2d.to_local(parent_node.global_position + parent_node.size / 2)
+	line_2d.add_point(start_pos)
+	line_2d.add_point(end_pos)

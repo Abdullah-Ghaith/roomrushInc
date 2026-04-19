@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnayrkrk0pe87"]
+
+[ext_resource type="Script" uid="uid://dlceiu60o5xq4" path="res://UI/Upgrades/UpgradeTable/category_bar.gd" id="1_8hfx4"]
+
+[node name="CategoryBar" type="HBoxContainer"]
+scale = Vector2(10, 10)
+script = ExtResource("1_8hfx4")
+
+[node name="OffenceButton" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="DefenceButton" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="MobilityButton" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="EconomyButton" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
