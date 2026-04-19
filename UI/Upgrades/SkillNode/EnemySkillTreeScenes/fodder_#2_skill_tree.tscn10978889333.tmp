@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://fvw3nqhw0ndg"]
+
+[ext_resource type="PackedScene" uid="uid://bml1mry3eaiyc" path="res://UI/Upgrades/SkillNode/skill_node.tscn" id="1_nkb5m"]
+[ext_resource type="Texture2D" uid="uid://dqsyqnf07hdnb" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons1.png" id="2_8c1xt"]
+[ext_resource type="Texture2D" uid="uid://d2smmo1kj1w8i" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons20.png" id="3_s1ilf"]
+[ext_resource type="Texture2D" uid="uid://b2os5trdybb01" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons22.png" id="4_b4ega"]
+[ext_resource type="Texture2D" uid="uid://gx4ddfprnwno" path="res://Assets/UI/Icons/SkillIcons/96x96/skill_icons10.png" id="5_yxbnn"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skillbutton" parent="." instance=ExtResource("1_nkb5m")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skillbutton2" parent="Skillbutton" instance=ExtResource("1_nkb5m")]
+layout_mode = 0
+offset_left = 90.0
+offset_top = -76.0
+offset_right = 138.0
+offset_bottom = -28.0
+scale = Vector2(0.98935384, 1)
+texture_normal = ExtResource("2_8c1xt")
+skill_id = "PAW"
+
+[node name="Skillbutton4" parent="Skillbutton/Skillbutton2" instance=ExtResource("1_nkb5m")]
+layout_mode = 0
+offset_left = -72.77477
+offset_top = -118.0
+offset_right = -24.774773
+offset_bottom = -70.0
+texture_normal = ExtResource("3_s1ilf")
+skill_id = "Stealth"
+
+[node name="Skillbutton5" parent="Skillbutton/Skillbutton2" instance=ExtResource("1_nkb5m")]
+layout_mode = 0
+offset_left = 71.76402
+offset_top = -118.0
+offset_right = 119.76402
+offset_bottom = -70.0
+texture_normal = ExtResource("4_b4ega")
+skill_id = "Armour Up"
+
+[node name="Skillbutton3" parent="Skillbutton" instance=ExtResource("1_nkb5m")]
+layout_mode = 0
+offset_left = -121.0
+offset_top = -75.0
+offset_right = -73.0
+offset_bottom = -27.0
+texture_normal = ExtResource("5_yxbnn")
+skill_id = "REGEN"

@@ -3,6 +3,8 @@ extends Node
 # scene_path -> money reward
 @onready var level_reward_ticks: Dictionary = SaveManager.current_save.level_time_ticks
 
+var tick_multiplier : float = 1.0
+
 var money : float = 0 :
 	set(value):
 		var diff = abs(value - money)
@@ -17,7 +19,7 @@ var money : float = 0 :
 
 func _ready() -> void:
 	SignalBus.level_period_elapsed.connect(func(_scene_path):
-		self.money += level_reward_ticks[_scene_path]
+		self.money += level_reward_ticks[_scene_path] * tick_multiplier
 		pass
 		)
 

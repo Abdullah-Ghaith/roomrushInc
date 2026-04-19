@@ -25,6 +25,7 @@ LevelTimers="*res://Util/Autoloads/LevelTimers.gd"
 CurrencyManager="*res://Util/Autoloads/CurrencyManager.gd"
 PlayerStats="*res://Util/Autoloads/PlayerStats.gd"
 WeaponRegistry="*res://Util/Autoloads/WeaponRegistry.gd"
+UpgradeManager="*res://Util/Autoloads/UpgradeManager.gd"
 
 [editor_plugins]
 
