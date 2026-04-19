@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ndtgut65wr7"]
+
+[ext_resource type="Script" uid="uid://dajqs8utduxx5" path="res://UI/DevTools/Reset All Skills/dev_reset_skills_button.gd" id="1_d8305"]
+
+[node name="DevResetButton" type="Button"]
+custom_minimum_size = Vector2(50, 50)
+text = "DEV: Reset ALL Upgrades "
+script = ExtResource("1_d8305")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fol2u422n8wu"]
+[gd_scene load_steps=10 format=3 uid="uid://fol2u422n8wu"]
 
 [ext_resource type="Script" uid="uid://bdy63p6pp7i6u" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.1/upgrade_table_2.1.gd" id="1_w0rt4"]
 [ext_resource type="Texture2D" uid="uid://8hanx748byna" path="res://Assets/UI/Bars/TabDivider.png" id="2_8y6qw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fvw3nqhw0ndg" path="res://UI/Upgrades/SkillTreeScenes/dumm_skill_tree.tscn" id="3_1xgw7"]
 [ext_resource type="PackedScene" uid="uid://c8q7uhj1ul0yl" path="res://UI/Upgrades/SkillTreeScenes/2dumm_skill_tree.tscn" id="4_nvi6n"]
 [ext_resource type="PackedScene" uid="uid://bnayrkrk0pe87" path="res://UI/Upgrades/UpgradeTable/category_bar.tscn" id="7_8y6qw"]
+[ext_resource type="PackedScene" uid="uid://3ndtgut65wr7" path="res://UI/DevTools/Reset All Skills/dev_reset_skills_button.tscn" id="8_molhc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61lt"]
 bg_color = Color(0.6, 0.6, 0.6, 0.21568628)
@@ -143,3 +144,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+
+[node name="DevResetButton" parent="." instance=ExtResource("8_molhc")]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 562.0
+offset_right = 715.0
+offset_bottom = 612.0

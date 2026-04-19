@@ -57,3 +57,10 @@ func _replay_upgrades() -> void:
 
 func get_purchased_level(skill_id: String) -> int:
 	return SaveManager.current_save.purchased_upgrades.get(skill_id, 0)
+
+
+func dev_reset_all_upgrades() -> void:
+	SaveManager.current_save.purchased_upgrades.clear()
+	SaveManager.save_game()
+	# Reload the scene to let everything re-initialize from the clean save
+	get_tree().reload_current_scene()
