@@ -279,3 +279,7 @@ libraries = {
 [node name="SquareDusting" parent="." instance=ExtResource("3_1ms5j")]
 
 [node name="EnemyLines" type="Line2D" parent="."]
+
+[node name="BeamSpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-15.333334, -27)

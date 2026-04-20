@@ -4,6 +4,7 @@ class_name DustableGate extends AnimatableBody2D
 
 @onready var dusting_animation_player: AnimationPlayer = %DustingAnimationPlayer
 @onready var sprite: Sprite2D = $Sprite
+@onready var beam_spawn_point: Marker2D = %BeamSpawnPoint
 
 var _enemy_lines: Dictionary = {}  # enemy -> Line2D
 var drawing : bool
@@ -18,16 +19,13 @@ func _process(_delta: float) -> void:
 		return
 	for enemy in _enemy_lines:
 		if is_instance_valid(enemy):
-			_enemy_lines[enemy].set_point_position(0, to_local(global_position))
+			_enemy_lines[enemy].set_point_position(0, to_local(beam_spawn_point.global_position))
 			_enemy_lines[enemy].set_point_position(1, to_local(_get_sprite_center(enemy)))
 
 func track_enemy(enemy: BaseEnemy) -> void:
-	var line = Line2D.new()
-	line.default_color = Color(1.0, 0.2, 0.2, 0.8)
-	line.width = 2.0
-	line.add_point(Vector2.ZERO)
-	line.add_point(Vector2.ZERO)
+	var line : ConnectionBeam = preload("res://Objects/VFX/EnemyConnectionLine/enemy_connection_beam.tscn").instantiate()
 	add_child(line)
+	line.set_beam_between(to_local(beam_spawn_point.global_position), to_local(enemy.global_position))
 	_enemy_lines[enemy] = line
 	enemy.health_component.died.connect(func(): _on_enemy_died(enemy))
 

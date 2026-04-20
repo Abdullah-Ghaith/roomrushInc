@@ -102,6 +102,6 @@ shader_parameter/square_border = false
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 shader_parameter/highlight_color = Color(1, 0.06999999, 0.06999999, 1)
-shader_parameter/frequency = 0.942000044745
+shader_parameter/frequency = 0.0
 shader_parameter/highlight_speed = 7.3310003482225
 shader_parameter/highlight_width = 15.0

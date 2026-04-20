@@ -198,7 +198,6 @@ shape = SubResource("CircleShape2D_8a0py")
 unique_name_in_owner = true
 path_desired_distance = 3.0
 target_desired_distance = 3.0
-debug_enabled = true
 
 [node name="NavUpdateTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -144,14 +144,14 @@ position = Vector2(319, 638)
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="Aggressor" parent="Enemies" instance=ExtResource("8_rv2cd")]
+position = Vector2(812, 658)
+
 [node name="Turret" parent="Enemies" instance=ExtResource("7_ebjtn")]
 position = Vector2(478, 353)
 rotation = -0.2139629
 scale = Vector2(1.0625921, 1.0625921)
 range = 10.785
-
-[node name="Aggressor" parent="Enemies" instance=ExtResource("8_rv2cd")]
-position = Vector2(812, 658)
 
 [node name="Aggressor2" parent="Enemies" instance=ExtResource("8_rv2cd")]
 position = Vector2(1383, 661)

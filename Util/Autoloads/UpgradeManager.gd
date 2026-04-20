@@ -32,7 +32,6 @@ func register_effect(skill_id: String, effect: UpgradeEffect) -> void:
 
 # Called by SkillNode._on_pressed() after the cost check passes.
 func purchase(skill_id: String, new_level: int, effect: UpgradeEffect) -> void:
-	var cost_index = new_level - 1  # costs array is 0-indexed, levels are 1-indexed
 	effect.apply(new_level)
 	SaveManager.current_save.purchased_upgrades[skill_id] = new_level
 	SaveManager.save_game()
