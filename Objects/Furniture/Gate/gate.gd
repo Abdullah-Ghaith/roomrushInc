@@ -5,13 +5,11 @@ extends AnimatableBody2D
 @onready var dusting_animation_player: AnimationPlayer = %DustingAnimationPlayer
 @onready var sprite: Sprite2D = $Sprite
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_enable_collision()
 	if disentigration_generator:
 		disentigration_generator.trigger.connect(_handle_disentigration)
-
 
 func _handle_disentigration() -> void:
 	dusting_animation_player.play("Dust")

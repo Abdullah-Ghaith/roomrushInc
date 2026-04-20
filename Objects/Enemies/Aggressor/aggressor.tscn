@@ -173,6 +173,10 @@ _data = {
 collision_layer = 16
 collision_mask = 18
 script = ExtResource("1_3co07")
+jump_force = null
+movement_speed = null
+knockback_friction = null
+active_range = null
 metadata/_custom_type_script = "uid://kotqb3662cgo"
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -198,6 +202,7 @@ shape = SubResource("CircleShape2D_8a0py")
 unique_name_in_owner = true
 path_desired_distance = 3.0
 target_desired_distance = 3.0
+debug_enabled = true
 
 [node name="NavUpdateTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -243,10 +248,9 @@ horizontal_spread = Vector2(-10, 10)
 vertical_rise = Vector2(-88, -64)
 metadata/_custom_type_script = "uid://cxq6u2eugeka1"
 
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component", "character_body")]
+[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("hitbox_component")]
 script = ExtResource("11_8a0py")
 hitbox_component = NodePath("../HitboxComponent")
-character_body = NodePath("")
 metadata/_custom_type_script = "uid://bbykee8631tfx"
 
 [node name="meleeAttackBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]

@@ -10,6 +10,7 @@ class_name BaseEnemy extends CharacterBody2D
 # -- Tuning --
 @export var movement_speed: float = 180.0
 @export var knockback_friction: float = 800.0
+@export var active_range: float = 1000.0
 
 # -- State --
 var player: CharacterBody2D = null
@@ -19,6 +20,7 @@ var enemy_active: bool = false
 
 # -- Consts --
 const WORLD_GEO_LAYER = 0b10
+const WORLD_OBSTACLE_LAYER = 0b1000_0000
 # ============================================================
 
 func _clean_up() -> void:
@@ -43,7 +45,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not player:
 		return
-	enemy_active = _has_line_of_sight()
+	enemy_active = _has_path_to_player() and ( _player_within_range() or _has_line_of_sight())
+	if not enemy_active:
+		print("has_path = " + str(_has_path_to_player()) + " has_line_of_sight = " + str(_has_line_of_sight()))
 	if not enemy_active:
 		return
 	if knockback_velocity != Vector2.ZERO:
@@ -91,6 +95,8 @@ func _on_timer_timeout() -> void:
 	nav_agent.get_next_path_position()
 	nav_update_timer.start()
 
+# ======================
+
 func _has_line_of_sight() -> bool:
 	if player == null:
 		return false
@@ -100,3 +106,29 @@ func _has_line_of_sight() -> bool:
 	query.collision_mask = WORLD_GEO_LAYER
 	var result := space.intersect_ray(query)
 	return result.is_empty() or result.collider == player
+
+func _has_path_to_player() -> bool:
+	if not player:
+		return false
+	var path = NavigationServer2D.map_get_path(
+		nav_agent.get_navigation_map(),
+		global_position,
+		player.global_position,
+		true
+	)
+	if path.size() < 2:
+		return false
+	
+	# check each segment of the path against the gate's collision
+	for i in range(path.size() - 1):
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(path[i], path[i + 1])
+		query.collision_mask = WORLD_OBSTACLE_LAYER
+		var result = space_state.intersect_ray(query)
+		if result:
+			return false
+	
+	return true
+
+func _player_within_range() -> bool:
+	return (player.global_position-self.global_position).length() < active_range

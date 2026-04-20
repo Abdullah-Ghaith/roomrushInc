@@ -78,7 +78,7 @@ end_position = Vector2(70, 420)
 
 [node name="NavigationLink2D8" type="NavigationLink2D" parent="NavLinks"]
 position = Vector2(126, 0)
-start_position = Vector2(132, 568)
+start_position = Vector2(183, 568)
 end_position = Vector2(70, 420)
 
 [node name="NavigationLink2D6" type="NavigationLink2D" parent="NavLinks"]
@@ -100,7 +100,7 @@ scale = Vector2(1.0625921, 1.0625921)
 range = 10.785
 
 [node name="Aggressor" parent="Enemies" instance=ExtResource("6_dgtes")]
-position = Vector2(927, 567)
+position = Vector2(928, 567)
 
 [node name="Aggressor2" parent="Enemies" instance=ExtResource("6_dgtes")]
 position = Vector2(148, 421)
