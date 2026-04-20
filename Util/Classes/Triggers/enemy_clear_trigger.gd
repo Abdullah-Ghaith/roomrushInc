@@ -3,18 +3,17 @@ class_name EnemyClearTrigger extends Trigger
 @export var enemies: Array[Node]
 @export var gate: DustableGate
 
-var _num_dead: int = 0
 
 func _ready() -> void:
 	for enemy in enemies:
-		enemy.health_component.died.connect(_on_enemy_died)
+		enemy.health_component.died.connect(func(): _on_enemy_died(enemy))
 
 func _check_trigger() -> void:
-	if _num_dead >= enemies.size():
+	if enemies.is_empty():
 		trigger.emit()
 
-func _on_enemy_died() -> void:
-	_num_dead += 1
+func _on_enemy_died(enemy: BaseEnemy) -> void:
+	enemies.erase(enemy)
 	_check_trigger()
 
 func highlight_enemies() -> void:

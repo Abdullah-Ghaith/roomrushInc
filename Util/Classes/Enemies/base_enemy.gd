@@ -47,8 +47,6 @@ func _physics_process(delta: float) -> void:
 		return
 	enemy_active = _has_path_to_player() and ( _player_within_range() or _has_line_of_sight())
 	if not enemy_active:
-		print("has_path = " + str(_has_path_to_player()) + " has_line_of_sight = " + str(_has_line_of_sight()))
-	if not enemy_active:
 		return
 	if knockback_velocity != Vector2.ZERO:
 		velocity = knockback_velocity

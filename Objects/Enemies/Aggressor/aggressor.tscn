@@ -173,10 +173,6 @@ _data = {
 collision_layer = 16
 collision_mask = 18
 script = ExtResource("1_3co07")
-jump_force = null
-movement_speed = null
-knockback_friction = null
-active_range = null
 metadata/_custom_type_script = "uid://kotqb3662cgo"
 
 [node name="Sprite" type="Sprite2D" parent="."]

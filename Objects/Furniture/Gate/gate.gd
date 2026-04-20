@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	for enemy in _enemy_lines:
 		if is_instance_valid(enemy):
 			_enemy_lines[enemy].set_point_position(0, to_local(global_position))
-			_enemy_lines[enemy].set_point_position(1, to_local(enemy.global_position))
+			_enemy_lines[enemy].set_point_position(1, to_local(_get_sprite_center(enemy)))
 
 func track_enemy(enemy: BaseEnemy) -> void:
 	var line = Line2D.new()
@@ -29,11 +29,10 @@ func track_enemy(enemy: BaseEnemy) -> void:
 	line.add_point(Vector2.ZERO)
 	add_child(line)
 	_enemy_lines[enemy] = line
-	# listen for death directly
-	if enemy.has_signal("died"):
-		enemy.health_component.died.connect(func(): _on_enemy_died(enemy))
+	enemy.health_component.died.connect(func(): _on_enemy_died(enemy))
 
 func _on_enemy_died(enemy: BaseEnemy) -> void:
+	print('enemy died')
 	if enemy in _enemy_lines:
 		_enemy_lines[enemy].queue_free()
 		_enemy_lines.erase(enemy)
@@ -51,7 +50,15 @@ func clean_up() -> void:
 		if child is CollisionShape2D:
 			child.disabled = true
 
+# ====
 func _enable_collision() -> void:
 	for child in get_children():
 		if child is CollisionShape2D:
 			child.disabled = false
+
+func _get_sprite_center(node: Node2D) -> Vector2:
+	# tries to find a sprite and use its center, falls back to a fixed offset
+	var sprite = node.get_node_or_null("Sprite2D")
+	if sprite:
+		return node.global_position + Vector2(0, -sprite.texture.get_height() * sprite.scale.y / 2.0)
+	return node.global_position + Vector2(0, -16.0)  # fallback offset
