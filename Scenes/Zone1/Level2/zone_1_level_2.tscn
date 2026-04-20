@@ -216,21 +216,23 @@ position = Vector2(-209, 532)
 start_position = Vector2(10.25, 36)
 end_position = Vector2(92, -69)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ComboBar" parent="CanvasLayer" instance=ExtResource("9_8p4e8")]
-offset_left = 39.0
-offset_top = 85.0
-offset_right = 167.0
-offset_bottom = 125.0
-
-[node name="LevelTimer" parent="CanvasLayer" instance=ExtResource("10_rvuan")]
-offset_left = 15.0
-offset_top = 51.0
-offset_right = 299.0
-offset_bottom = 91.0
-
 [node name="ReachEndLevelCondition" type="Node" parent="." node_paths=PackedStringArray("exit_portal")]
 script = ExtResource("14_322pl")
 exit_portal = NodePath("../ExitPortal")
 metadata/_custom_type_script = "uid://vo8xpuwm2hs5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ComboBar" parent="CanvasLayer" instance=ExtResource("9_8p4e8")]
+offset_left = 32.000004
+offset_top = 43.0
+offset_right = 160.0
+offset_bottom = 83.0
+scale = Vector2(0.65, 0.65)
+
+[node name="LevelTimer" parent="CanvasLayer" instance=ExtResource("10_rvuan")]
+offset_left = 9.0
+offset_top = 14.0
+offset_right = 293.0
+offset_bottom = 54.0
+scale = Vector2(0.5, 0.5)

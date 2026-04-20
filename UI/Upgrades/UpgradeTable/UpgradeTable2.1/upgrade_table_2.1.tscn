@@ -40,14 +40,14 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_constants/separation = -26
 
-[node name="EnemyTab" type="TextureButton" parent="HBoxContainer/Labels"]
+[node name="Tab1" type="TextureButton" parent="HBoxContainer/Labels"]
 self_modulate = Color(0, 0, 0, 0.4)
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("2_8y6qw")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/Labels/EnemyTab"]
+[node name="Label" type="Label" parent="HBoxContainer/Labels/Tab1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,15 +63,15 @@ grow_vertical = 2
 rotation = -1.5707964
 scale = Vector2(1.0127128, 1)
 theme_override_fonts/font = ExtResource("3_0o13v")
-text = "Enemies"
+text = "Tab1"
 
-[node name="TowerTab" type="TextureButton" parent="HBoxContainer/Labels"]
+[node name="Tab2" type="TextureButton" parent="HBoxContainer/Labels"]
 layout_mode = 2
 size_flags_vertical = 3
 texture_normal = ExtResource("2_8y6qw")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/Labels/TowerTab"]
+[node name="Label" type="Label" parent="HBoxContainer/Labels/Tab2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,7 +87,7 @@ grow_vertical = 2
 rotation = -1.5707964
 scale = Vector2(1.0127128, 1)
 theme_override_fonts/font = ExtResource("3_0o13v")
-text = "Towers"
+text = "Tab2"
 
 [node name="Panel2" type="Panel" parent="HBoxContainer"]
 clip_contents = true
@@ -147,7 +147,7 @@ mouse_filter = 2
 
 [node name="DevResetButton" parent="." instance=ExtResource("8_molhc")]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 562.0
-offset_right = 715.0
-offset_bottom = 612.0
+offset_left = 257.0
+offset_top = 301.0
+offset_right = 462.0
+offset_bottom = 351.0

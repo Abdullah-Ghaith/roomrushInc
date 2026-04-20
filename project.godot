@@ -27,6 +27,15 @@ PlayerStats="*res://Util/Autoloads/PlayerStats.gd"
 WeaponRegistry="*res://Util/Autoloads/WeaponRegistry.gd"
 UpgradeManager="*res://Util/Autoloads/UpgradeManager.gd"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/always_on_top=true
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg")

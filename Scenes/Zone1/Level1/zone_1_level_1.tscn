@@ -108,16 +108,18 @@ position = Vector2(148, 421)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ComboBar" parent="CanvasLayer" instance=ExtResource("7_0nhvh")]
-offset_left = 39.0
-offset_top = 85.0
-offset_right = 167.0
-offset_bottom = 125.0
+offset_left = 32.000004
+offset_top = 43.0
+offset_right = 160.0
+offset_bottom = 83.0
+scale = Vector2(0.65, 0.65)
 
 [node name="LevelTimer" parent="CanvasLayer" instance=ExtResource("9_mfm6b")]
-offset_left = 15.0
-offset_top = 51.0
-offset_right = 299.0
-offset_bottom = 91.0
+offset_left = 9.0
+offset_top = 14.0
+offset_right = 293.0
+offset_bottom = 54.0
+scale = Vector2(0.5, 0.5)
 
 [node name="ExterminationLevelCondition" type="Node" parent="."]
 script = ExtResource("8_0nhvh")

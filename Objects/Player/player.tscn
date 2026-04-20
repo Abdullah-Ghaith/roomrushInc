@@ -30,6 +30,7 @@ rotation = 0.0009770232
 
 [node name="ShakingCamera" type="Camera2D" parent="."]
 position = Vector2(0, -111)
+zoom = Vector2(0.33, 0.33)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("4_bpp7x")

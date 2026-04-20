@@ -54,10 +54,11 @@ autostart = true
 [node name="Zone1LevelSelectUI" parent="CanvasLayer" instance=ExtResource("8_hryqi")]
 unique_name_in_owner = true
 visible = false
-offset_left = 1071.0
-offset_top = 602.0
-offset_right = -81.0
-offset_bottom = -46.0
+offset_left = 160.0
+offset_top = 31.0
+offset_right = -480.0
+offset_bottom = -329.0
+scale = Vector2(1, 1)
 
 [node name="SmithingBuilding" parent="." instance=ExtResource("10_imbg2")]
 position = Vector2(-423, 37)
