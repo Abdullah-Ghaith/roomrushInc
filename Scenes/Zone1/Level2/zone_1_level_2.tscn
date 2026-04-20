@@ -185,11 +185,12 @@ libraries = {
 }
 autoplay = "Drop"
 
-[node name="EnemyClearTrigger" type="Node2D" parent="Gate" node_paths=PackedStringArray("enemies")]
+[node name="EnemyClearTrigger" type="Node2D" parent="Gate" node_paths=PackedStringArray("enemies", "gate")]
 position = Vector2(-394.6667, -182.66667)
 scale = Vector2(0.33333334, 0.33333334)
 script = ExtResource("13_5ehy7")
 enemies = [NodePath("../../Enemies/Aggressor"), NodePath("../../Enemies/Shooter")]
+gate = NodePath("..")
 metadata/_custom_type_script = "uid://3sj84hjqiy8g"
 
 [node name="DirtParticles" parent="Gate" instance=ExtResource("15_miy56")]

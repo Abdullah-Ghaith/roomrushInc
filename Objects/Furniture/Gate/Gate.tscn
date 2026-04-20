@@ -243,6 +243,7 @@ texture = ExtResource("1_4imvp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.16666651, -4)
 shape = SubResource("RectangleShape2D_mof7d")
+disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(3.1789145e-07, 41.000008)
@@ -276,3 +277,5 @@ libraries = {
 }
 
 [node name="SquareDusting" parent="." instance=ExtResource("3_1ms5j")]
+
+[node name="EnemyLines" type="Line2D" parent="."]

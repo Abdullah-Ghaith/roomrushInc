@@ -1,6 +1,8 @@
 class_name EnemyClearTrigger extends Trigger
 
 @export var enemies: Array[Node]
+@export var gate: DustableGate
+
 var _num_dead: int = 0
 
 func _ready() -> void:
@@ -21,3 +23,6 @@ func highlight_enemies() -> void:
 			enemy.set_highlight(true)
 		else:
 			printerr("ENEMY HAS NO SET_HIGHLIHGHT:" + str(enemy))
+		
+		if gate:
+			gate.track_enemy(enemy)

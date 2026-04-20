@@ -6,8 +6,6 @@ Next up:
 2. Figure out a way to save the portal being paid for
 3. make a dev tool for resetting skills
 
-BUGFIXES:
-	- Make enemies active based on if they can reach me, rather than LoS?
 
 Planned
 - Killing the last enemy causes this kind of shockwave to ripple across the screen https://www.youtube.com/watch?v=SCHdglr35pk
