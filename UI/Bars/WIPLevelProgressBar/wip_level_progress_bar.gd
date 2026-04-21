@@ -13,6 +13,8 @@ var period: float = 0.0
 var elapsed: float = 0.0
 var has_best_time: bool = false
 
+signal unlocked_changed(state: bool)
+
 func _ready() -> void:
 	if unlocked:
 		lock_icon.hide()
@@ -27,6 +29,9 @@ func _ready() -> void:
 		lock_icon.show()
 		lock_icon_2.show()
 		level_progress_bar.value = 0.0
+
+	unlocked_changed.emit(unlocked)
+
 
 func _load_period() -> void:
 	if not level_scene:

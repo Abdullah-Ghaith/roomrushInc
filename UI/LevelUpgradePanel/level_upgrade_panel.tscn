@@ -1,6 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw3x31hrnay"]
+[gd_scene load_steps=7 format=3 uid="uid://bw3x31hrnay"]
 
 [ext_resource type="Script" uid="uid://b8aqd5vghnfpy" path="res://UI/LevelUpgradePanel/level_upgrade_panel.gd" id="1_ahj7b"]
+[ext_resource type="PackedScene" uid="uid://ciq0fmipxmnna" path="res://Objects/SkillNodeInstantiations/LevelUpgrades/timer_skill_node.tscn" id="2_6mehg"]
+[ext_resource type="Script" uid="uid://cgep1xv0i1nmd" path="res://Util/Classes/Upgrades/level_timer_effect.gd" id="3_hbhm7"]
+[ext_resource type="PackedScene" uid="uid://c5h3yemnbjkqk" path="res://Objects/SkillNodeInstantiations/LevelUpgrades/completion_skill_node.tscn" id="4_d0b52"]
+[ext_resource type="PackedScene" uid="uid://dlcb6qxtra4yl" path="res://Objects/SkillNodeInstantiations/LevelUpgrades/tick_skill_node.tscn" id="4_hbhm7"]
 
-[node name="LevelUpgradePanel" type="Node"]
+[sub_resource type="Resource" id="Resource_d0b52"]
+script = ExtResource("3_hbhm7")
+reduction_percent_per_level = 0.5
+metadata/_custom_type_script = "uid://cgep1xv0i1nmd"
+
+[node name="LevelUpgradePanel" type="PopupPanel"]
+oversampling_override = 1.0
+size = Vector2i(170, 268)
+visible = true
 script = ExtResource("1_ahj7b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 166.0
+offset_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<LevelDisplayName>"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Timer Speed"
+
+[node name="TimerSkillNode" parent="VBoxContainer" instance=ExtResource("2_6mehg")]
+unique_name_in_owner = true
+layout_mode = 2
+skill_resource = SubResource("Resource_d0b52")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tick Payout"
+
+[node name="TickSkillNode" parent="VBoxContainer" instance=ExtResource("4_hbhm7")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Completion Bonus"
+
+[node name="CompletionSkillNode" parent="VBoxContainer" instance=ExtResource("4_d0b52")]
+unique_name_in_owner = true
+layout_mode = 2

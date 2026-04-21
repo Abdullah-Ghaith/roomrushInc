@@ -62,7 +62,6 @@ func _on_pressed() -> void:
 
 	# Guard: can't afford
 	if CurrencyManager.money < cost:
-		print("broke bi")
 		button_pressed = false
 		_flash_insufficient_funds()
 		return

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5h3yemnbjkqk"]
+
+[ext_resource type="PackedScene" uid="uid://d06aiafkto85v" path="res://Objects/SkillNodeInstantiations/bullet_skill_node.tscn" id="1_i82ig"]
+[ext_resource type="Texture2D" uid="uid://dpgf1pnep8ege" path="res://Assets/UI/Icons/SkillIcons/48x48/skill_icons31.png" id="2_i82ig"]
+[ext_resource type="Script" uid="uid://bjtrj6kcuodvv" path="res://Util/Classes/Upgrades/level_payout_effect.gd" id="3_i82ig"]
+
+[sub_resource type="Resource" id="Resource_jkt1w"]
+script = ExtResource("3_i82ig")
+completion_bonus_per_level = 10.0
+metadata/_custom_type_script = "uid://bjtrj6kcuodvv"
+
+[node name="CompletionSkillNode" instance=ExtResource("1_i82ig")]
+texture_normal = ExtResource("2_i82ig")
+skill_id = ""
+skill_resource = SubResource("Resource_jkt1w")
+max_lvl = 3
+costs = Array[float]([20.0, 45.0, 80.0])

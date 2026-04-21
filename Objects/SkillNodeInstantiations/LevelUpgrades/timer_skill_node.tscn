@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciq0fmipxmnna"]
+
+[ext_resource type="PackedScene" uid="uid://d06aiafkto85v" path="res://Objects/SkillNodeInstantiations/bullet_skill_node.tscn" id="1_2k70v"]
+[ext_resource type="Texture2D" uid="uid://cmfk7qgpk571c" path="res://Assets/UI/Icons/SkillIcons/48x48/skill_icons30.png" id="2_xrqu4"]
+[ext_resource type="Script" uid="uid://cgep1xv0i1nmd" path="res://Util/Classes/Upgrades/level_timer_effect.gd" id="3_8su3g"]
+
+[sub_resource type="Resource" id="Resource_xrqu4"]
+script = ExtResource("3_8su3g")
+metadata/_custom_type_script = "uid://cgep1xv0i1nmd"
+
+[node name="TimerSkillNode" instance=ExtResource("1_2k70v")]
+texture_normal = ExtResource("2_xrqu4")
+skill_id = ""
+skill_resource = SubResource("Resource_xrqu4")
+max_lvl = 3
+costs = Array[float]([15.0, 35.0, 60.0])
