@@ -1,32 +1,99 @@
 class_name LevelUpgradePanel extends PopupPanel
-# Generic per-level upgrade popup.
-# Call open_for_level(scene_path) to populate and show it.
-# The SkillNodes inside are pre-authored in the scene with their
-# scene_path exports left blank — this script fills them at runtime.
+# Single shared panel for all level upgrades.
+# Call open_for_level(data) with a LevelUpgradeData resource.
+# Dynamically builds/reconfigures three SkillNodes each time.
 
-@onready var timer_node: SkillNode = %TimerSkillNode
-@onready var tick_node: SkillNode = %TickSkillNode
-@onready var completion_node: SkillNode = %CompletionSkillNode
 @onready var title_label: Label = %TitleLabel
+@onready var timer_container: VBoxContainer = %TimerContainer
+@onready var tick_container: VBoxContainer = %TickContainer
+@onready var completion_container: VBoxContainer = %CompletionContainer
 
-var _scene_path: String = ""
+# Currently displayed data — tracked so we can clean up on next open
+var _current_data: LevelUpgradeData = null
+var _nodes: Dictionary = {}  # skill_id -> SkillNode
 
+const SKILL_NODE_SCENE = preload("res://UI/Upgrades/SkillNode/skill_node.tscn")
 
-func open_for_level(scene_path: String, display_name: String) -> void:
-	_scene_path = scene_path
-	title_label.text = display_name
+func open_for_level(data: LevelUpgradeData) -> void:
+	print("open for level entered")
+	if data == null:
+		return
+	print("open for level data not null")
+	title_label.text = data.display_name
 
-	# Inject the scene_path into each effect resource at runtime.
-	# The SkillNode's skill_resource is a LevelTimerReductionEffect /
-	# LevelPayoutBonusEffect — we set scene_path on it before it registers.
-	_inject_scene_path(timer_node)
-	_inject_scene_path(tick_node)
-	_inject_scene_path(completion_node)
+	# Build or reconfigure each of the three upgrade nodes
+	_setup_node(
+		timer_container,
+		data.timer_skill_id,
+		data.timer_costs,
+		data.timer_costs.size(),
+		_make_timer_effect(data)
+	)
+	_setup_node(
+		tick_container,
+		data.tick_skill_id,
+		data.tick_costs,
+		data.tick_costs.size(),
+		_make_tick_effect(data)
+	)
+	_setup_node(
+		completion_container,
+		data.completion_skill_id,
+		data.completion_costs,
+		data.completion_costs.size(),
+		_make_completion_effect(data)
+	)
 
+	_current_data = data
 	popup_centered()
 
 
-func _inject_scene_path(node: SkillNode) -> void:
-	if node.skill_resource and ("scene_path" in node.skill_resource):
-		# Effect resources are plain Resources — set scene_path directly
-		node.skill_resource.scene_path = _scene_path
+func _setup_node(
+		container: VBoxContainer,
+		skill_id: String,
+		costs: Array[float],
+		max_lvl: int,
+		effect: UpgradeEffect
+) -> void:
+	# Remove any existing SkillNode in this container (switching levels)
+	for child in container.get_children():
+		if child is SkillNode:
+			child.queue_free()
+			break
+
+	var node: SkillNode = SKILL_NODE_SCENE.instantiate()
+
+	node.skill_id = skill_id
+	node.costs = costs
+	node.max_lvl = max_lvl
+	node.skill_resource = effect
+
+	container.add_child(node)
+
+	_nodes[skill_id] = node
+
+
+func _make_timer_effect(data: LevelUpgradeData) -> LevelTimerReductionEffect:
+	print("making timer effect node")
+	var e := LevelTimerReductionEffect.new()
+	e.scene_path = data.scene_path
+	e.reduction_percent_per_level = data.timer_reduction_percent
+	return e
+
+
+func _make_tick_effect(data: LevelUpgradeData) -> LevelPayoutBonusEffect:
+	print("making tick effect node")
+	var e := LevelPayoutBonusEffect.new()
+	print("made")
+	e.scene_path = data.scene_path
+	e.tick_bonus_per_level = data.tick_bonus
+	e.completion_bonus_per_level = 0.0
+	return e
+
+
+func _make_completion_effect(data: LevelUpgradeData) -> LevelPayoutBonusEffect:
+	var e := LevelPayoutBonusEffect.new()
+	e.scene_path = data.scene_path
+	e.tick_bonus_per_level = 0.0
+	e.completion_bonus_per_level = data.completion_bonus
+	return e

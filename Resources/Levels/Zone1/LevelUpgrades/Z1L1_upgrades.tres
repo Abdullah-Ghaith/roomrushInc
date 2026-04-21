@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelUpgradeData" load_steps=2 format=3 uid="uid://dh64dmud6a6e0"]
+
+[ext_resource type="Script" uid="uid://c2tlpp0jguiy3" path="res://Util/Classes/Levels/level_upgrade_data.gd" id="1_e7fjj"]
+
+[resource]
+script = ExtResource("1_e7fjj")
+display_name = "Zone 1 Level 1"
+scene_path = "res://Scenes/Zone1/Level1/zone_1_level_1.tscn"
+timer_skill_id = "z1l1_timer"
+tick_skill_id = "z1l1_tick"
+completion_skill_id = "z1l1_completion"
+timer_reduction_percent = 0.1
+metadata/_custom_type_script = "uid://c2tlpp0jguiy3"

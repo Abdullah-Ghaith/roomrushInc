@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://37ib7y0pxa1l"]
+[gd_scene load_steps=14 format=3 uid="uid://37ib7y0pxa1l"]
 
 [ext_resource type="Texture2D" uid="uid://bd70bo3ix0une" path="res://Assets/UI/Panels/BluePanel.png" id="1_tuq3d"]
 [ext_resource type="PackedScene" uid="uid://3ndtgut65wr7" path="res://UI/DevTools/Reset All Skills/dev_reset_skills_button.tscn" id="2_bsj53"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cn02gavcyhamb" path="res://UI/Buttons/CloseButton/closebutton.tscn" id="5_dbtjx"]
 [ext_resource type="PackedScene" uid="uid://bd0pxlrpf86ie" path="res://Scenes/Zone1/Level2/zone_1_level_2.tscn" id="5_vt8xp"]
 [ext_resource type="PackedScene" uid="uid://bw3x31hrnay" path="res://UI/LevelUpgradePanel/level_upgrade_panel.tscn" id="6_jj1ss"]
+[ext_resource type="Resource" uid="uid://dh64dmud6a6e0" path="res://Resources/Levels/Zone1/LevelUpgrades/Z1L1_upgrades.tres" id="8_owd2j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fykm"]
 texture = ExtResource("1_tuq3d")
@@ -28,6 +29,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.545, 1.545)
 
+[node name="LevelUpgradePanel" parent="." groups=["level_upgrade_panel"] instance=ExtResource("6_jj1ss")]
+visible = false
+
 [node name="BGPanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(320, 320)
 layout_mode = 0
@@ -36,6 +40,13 @@ offset_bottom = 320.0
 theme = SubResource("Theme_amn6t")
 
 [node name="DevResetButton" parent="BGPanel" instance=ExtResource("2_bsj53")]
+layout_mode = 0
+offset_left = 55.663433
+offset_top = 265.3722
+offset_right = 260.66342
+offset_bottom = 315.3722
+
+[node name="DevResetButton" parent="BGPanel/DevResetButton" instance=ExtResource("2_bsj53")]
 layout_mode = 0
 offset_left = 55.663433
 offset_top = 265.3722
@@ -68,9 +79,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 theme_override_constants/separation = 63
 
-[node name="LevelUpgradePanel" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_jj1ss")]
-visible = false
-
 [node name="WIPLevelProgressBar" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]
 layout_mode = 2
 level_scene = ExtResource("3_b6odg")
@@ -91,8 +99,7 @@ offset_right = 125.37955
 offset_bottom = 48.75136
 scale = Vector2(2.3756795, 1.7195598)
 script = ExtResource("5_4c43n")
-level_panel = NodePath("../../LevelUpgradePanel")
-level_display_name = "Zone 1 - Level 1"
+level_data = ExtResource("8_owd2j")
 metadata/_custom_type_script = "uid://ndqpp3qyabwb"
 
 [node name="WIPLevelProgressBar2" parent="BGPanel/ScrollPanelContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_ph3v6")]

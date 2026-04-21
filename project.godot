@@ -54,6 +54,7 @@ folder_colors={
 
 Player=""
 Enemy=""
+level_upgrade_panel=""
 
 [input]
 
