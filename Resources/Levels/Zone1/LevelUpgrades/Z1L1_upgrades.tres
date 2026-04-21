@@ -6,8 +6,8 @@
 script = ExtResource("1_e7fjj")
 display_name = "Zone 1 Level 1"
 scene_path = "res://Scenes/Zone1/Level1/zone_1_level_1.tscn"
-timer_skill_id = "z1l1_timer"
-tick_skill_id = "z1l1_tick"
-completion_skill_id = "z1l1_completion"
+level_id = "Z1L1"
 timer_reduction_percent = 0.1
+tick_bonus = 15.0
+completion_bonus = 10.0
 metadata/_custom_type_script = "uid://c2tlpp0jguiy3"
