@@ -1,5 +1,6 @@
 class_name BasicGun extends Node2D
 
+const WEAPON_ID : String = "basic_gun"
 
 @export var bullet_scene : PackedScene = null
 @export var FIRE_CD : float = 0.5
@@ -7,7 +8,12 @@ class_name BasicGun extends Node2D
 @onready var shooting_point: Marker2D = %"Shooting Point"
 @onready var gun_sprite: Sprite2D = %"Gun Sprite"
 
-var curr_fire_cd : float = FIRE_CD 
+var curr_fire_cd : float = 0.0
+
+func _ready() -> void:
+	if not WeaponRegistry._registry.has(WEAPON_ID):
+		WeaponRegistry.register_weapon(WEAPON_ID, {"fire_rate": 0.5, "damage": 1.0, "bullet_speed": 800.0}) #TODO <- fix this ai slop
+
 
 func _physics_process(delta: float) -> void:
 	# Rotate gun with mouse
@@ -25,7 +31,8 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if Input.is_action_pressed("shoot"):
-		curr_fire_cd = FIRE_CD
+		curr_fire_cd = WeaponRegistry.get_stat(WEAPON_ID, "fire_rate")
+
 		
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = shooting_point.global_position

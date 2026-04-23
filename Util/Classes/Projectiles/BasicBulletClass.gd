@@ -19,7 +19,7 @@ func _on_hitbox_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		## Compose attack
 		var attack = Attack.new()
-		attack.attack_damage   = bullet_data.damage
+		attack.attack_damage   = bullet_data.damage * PlayerStats.damage_multiplier
 		attack.crit_chance     = bullet_data.crit_chance
 		attack.crit_modifier   = bullet_data.crit_modifier
 		attack.attack_position = self.global_position

@@ -5,6 +5,7 @@ extends Node
 # WeaponStatEffect writes into here via apply().
 
 # Base stats are defined here. Add a new entry for each weapon you add.
+#TODO: Make this use a resource tbh
 var _registry: Dictionary = {
 	"basic_gun": {
 		"fire_rate": 0.5,      # seconds between shots (lower = faster)
