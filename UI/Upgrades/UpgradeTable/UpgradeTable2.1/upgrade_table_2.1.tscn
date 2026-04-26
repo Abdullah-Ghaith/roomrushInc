@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://fol2u422n8wu"]
+[gd_scene load_steps=8 format=3 uid="uid://fol2u422n8wu"]
 
 [ext_resource type="Script" uid="uid://bdy63p6pp7i6u" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.1/upgrade_table_2.1.gd" id="1_w0rt4"]
-[ext_resource type="Texture2D" uid="uid://8hanx748byna" path="res://Assets/UI/Bars/TabDivider.png" id="2_8y6qw"]
 [ext_resource type="PackedScene" uid="uid://xmuupsjjqom5" path="res://UI/Upgrades/UpgradeTable/UpgradeTable2.1/entity_tab.tscn" id="2_nj43k"]
-[ext_resource type="FontFile" uid="uid://copcx1bwn3g8n" path="res://Assets/Fonts/Tektur-VariableFont_wdth,wght.ttf" id="3_0o13v"]
 [ext_resource type="PackedScene" uid="uid://fvw3nqhw0ndg" path="res://UI/Upgrades/SkillTreeScenes/dumm_skill_tree.tscn" id="3_1xgw7"]
 [ext_resource type="PackedScene" uid="uid://c8q7uhj1ul0yl" path="res://UI/Upgrades/SkillTreeScenes/2dumm_skill_tree.tscn" id="4_nvi6n"]
 [ext_resource type="PackedScene" uid="uid://bnayrkrk0pe87" path="res://UI/Upgrades/UpgradeTable/category_bar.tscn" id="7_8y6qw"]
@@ -35,59 +33,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-
-[node name="Labels" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = -26
-
-[node name="Tab1" type="TextureButton" parent="HBoxContainer/Labels"]
-self_modulate = Color(0, 0, 0, 0.4)
-layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("2_8y6qw")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/Labels/Tab1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = 30.0
-offset_right = 55.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5707964
-scale = Vector2(1.0127128, 1)
-theme_override_fonts/font = ExtResource("3_0o13v")
-text = "Tab1"
-
-[node name="Tab2" type="TextureButton" parent="HBoxContainer/Labels"]
-layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("2_8y6qw")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/Labels/Tab2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = 30.0
-offset_right = 47.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5707964
-scale = Vector2(1.0127128, 1)
-theme_override_fonts/font = ExtResource("3_0o13v")
-text = "Tab2"
 
 [node name="Panel2" type="Panel" parent="HBoxContainer"]
 clip_contents = true

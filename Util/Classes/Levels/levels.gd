@@ -11,5 +11,6 @@ func _ready() -> void:
 		CurrencyManager.money += level_money.completion_value
 		CurrencyManager.add_level_tick(scene_path, level_money.tick_value)
 		SignalBus.level_completed.emit(scene_path, level_timer.elapsed_time)
+		SignalBus.emit_end_shockwave.emit(level_condition.get_shock_position())
 		)
  

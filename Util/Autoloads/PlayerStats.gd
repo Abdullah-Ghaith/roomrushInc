@@ -18,14 +18,13 @@ var dash_cooldown: float = 1.0
 var double_jump_count: int = 1      # extra jumps above the base jump
 
 # --- Ability flags (unlocked by AbilityUnlockEffect) ---
-var dash_enabled: bool = false
-var double_jump_enabled: bool = false
-var wall_jump_enabled: bool = false
-var slide_enabled: bool = false
-var fast_fall_enabled: bool = false
-var reflector_enabled: bool = false
+var dash_enabled: bool = true
+var double_jump_enabled: bool = true
+var wall_jump_enabled: bool = true
+var fast_fall_enabled: bool = true
+var reflector_enabled: bool = true
 var vampirism_enabled: bool = false
 
 # --- Unlock tracking (read by the upgrade table to build tabs) ---
 var unlocked_abilities: Array[String] = []
-var unlocked_weapons: Array[String] = []
+var unlocked_weapons: Array[String] = ["basic_gun"]

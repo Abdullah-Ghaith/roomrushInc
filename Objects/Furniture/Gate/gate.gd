@@ -7,7 +7,8 @@ class_name DustableGate extends AnimatableBody2D
 @onready var beam_spawn_point: Marker2D = %BeamSpawnPoint
 
 var _enemy_lines: Dictionary = {}  # enemy -> Line2D
-var drawing : bool
+var _drawing : bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_enable_collision()
@@ -15,7 +16,7 @@ func _ready() -> void:
 		disentigration_generator.trigger.connect(_handle_disentigration)
 
 func _process(_delta: float) -> void:
-	if not drawing:
+	if not _drawing:
 		return
 	for enemy in _enemy_lines:
 		if is_instance_valid(enemy):
@@ -30,7 +31,6 @@ func track_enemy(enemy: BaseEnemy) -> void:
 	enemy.health_component.died.connect(func(): _on_enemy_died(enemy))
 
 func _on_enemy_died(enemy: BaseEnemy) -> void:
-	print('enemy died')
 	if enemy in _enemy_lines:
 		_enemy_lines[enemy].queue_free()
 		_enemy_lines.erase(enemy)
@@ -40,7 +40,7 @@ func _handle_disentigration() -> void:
 
 func set_highlight(enable : bool) -> void:
 	sprite.material.set_shader_parameter("enabled", enable)
-	drawing = enable
+	_drawing = enable
 
 func clean_up() -> void:
 	sprite.set_material(null)

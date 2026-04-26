@@ -40,7 +40,7 @@ func _start_combo() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 0.3).set_trans(Tween.TRANS_SINE)
 
-func increment_combo() -> void:
+func increment_combo(enemy_node: BaseEnemy) -> void:
 	if combo_bar_lvl == 1:
 		_start_combo()
 	decay_timer.start()

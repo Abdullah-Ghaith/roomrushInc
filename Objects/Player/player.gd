@@ -73,13 +73,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("dash") and _dash_cooldown_remaining <= 0.0:
 			_start_dash()
 
-	# --- Slide ---
-	if PlayerStats.slide_enabled:
-		_is_sliding = Input.is_action_pressed("move_down") and is_on_floor()
 
 	# --- Horizontal movement ---
 	var direction := Input.get_axis("move_left", "move_right")
-	var current_speed = PlayerStats.speed * (0.4 if _is_sliding else 1.0)
+	var current_speed = PlayerStats.speed
 
 	if direction:
 		velocity.x = direction * current_speed

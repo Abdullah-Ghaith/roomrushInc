@@ -25,6 +25,10 @@ level_timer = NodePath("CanvasLayer/LevelTimer")
 level_condition = NodePath("ExterminationLevelCondition")
 metadata/_custom_type_script = "uid://d1dxi8d0x2v4b"
 
+[node name="ExterminationLevelCondition" type="Node" parent="."]
+script = ExtResource("8_0nhvh")
+metadata/_custom_type_script = "uid://bp5n8tnreuh4g"
+
 [node name="Player" parent="." instance=ExtResource("2_hiqor")]
 position = Vector2(421, 549)
 
@@ -120,7 +124,3 @@ offset_top = 14.0
 offset_right = 293.0
 offset_bottom = 54.0
 scale = Vector2(0.5, 0.5)
-
-[node name="ExterminationLevelCondition" type="Node" parent="."]
-script = ExtResource("8_0nhvh")
-metadata/_custom_type_script = "uid://bp5n8tnreuh4g"

@@ -5,3 +5,6 @@ class_name ReachEndLevelCondition extends LevelCondition
 func _ready() -> void:
 	if exit_portal:
 		exit_portal.player_detected.connect(level_condition_reached.emit)
+
+func get_shock_position():
+	return exit_portal.global_position

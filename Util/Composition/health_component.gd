@@ -29,7 +29,7 @@ func take_damage(attack: Attack) -> void:
 		damage *= attack.crit_modifier
 	
 	if self.get_parent().is_in_group("Enemy"):
-		SignalBus.hit_landed.emit(attack.attack_damage)
+		CombatBus.player_hit_landed.emit(attack.attack_damage)
 
 	# Take Damage
 	health -= damage

@@ -11,3 +11,6 @@ signal shake_camera(x_shake : float, y_shake : float)
 # entity_type is "weapon" or "ability"
 # Listened to by the upgrade table to dynamically add tabs.
 signal entity_unlocked(entity_id: String, entity_type: String)
+
+##VFX
+signal emit_end_shockwave(world_position: Vector2)

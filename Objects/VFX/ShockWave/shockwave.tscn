@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm3vmgau7xkoc"]
+
+[ext_resource type="Shader" uid="uid://bcuk2hidx1o2n" path="res://Objects/VFX/ShockWave/shockwave.gdshader" id="1_3d3r1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d3r1"]
+shader = ExtResource("1_3d3r1")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.09209999766987
+shader_parameter/feather = 0.30000001425
+
+[sub_resource type="Animation" id="Animation_utnk6"]
+resource_name = "shockwave_pulse"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.250000011875, 0.650000030875, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fb06x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjo0s"]
+_data = {
+&"RESET": SubResource("Animation_fb06x"),
+&"shockwave_pulse": SubResource("Animation_utnk6")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ShockWave" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3d3r1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ShockWave")
+libraries = {
+&"": SubResource("AnimationLibrary_pjo0s")
+}
